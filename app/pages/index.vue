@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import SectionsHero from '~/components/sections/SectionHero.vue'
+import SectionsAbout from '~/components/sections/SectionAbout.vue'
+import SectionsProjects from '~/components/sections/SectionProjects.vue'
+import SectionsStack from '~/components/sections/SectionStack.vue'
+import SectionsExperience from '~/components/sections/SectionExperience.vue'
+import SectionsContact from '~/components/sections/SectionContact.vue'
+</script>
+
 <template>
-  <div>hello</div>
+  <div>
+    <AppHeader />
+    <main>
+      <SectionsHero />
+      <SectionsAbout />
+      <SectionsProjects />
+      <SectionsStack />
+      <SectionsExperience />
+      <SectionsContact />
+    </main>
+    <AppFooter />
+  </div>
 </template>
