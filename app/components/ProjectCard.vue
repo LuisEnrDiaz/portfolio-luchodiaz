@@ -9,47 +9,64 @@ defineProps<{
 </script>
 
 <template>
-  <article class="project-card" :class="{ 'project-card--reverse': reverse }">
+  <article
+    class="project-card"
+    :class="{ 'project-card--reverse': reverse }"
+    data-gsap="project"
+  >
     <div
       class="project-card__visual"
       :class="`project-card__visual--${project.tone}`"
+      data-gsap="project-visual"
       aria-hidden="true"
     >
       <div class="project-card__frame">
-        <span class="project-card__mark" />
-        <span class="project-card__caption u-serif">{{ project.subtitle }}</span>
+        <span class="project-card__index">0{{ index + 1 }}</span>
+        <span class="project-card__year">{{ project.year }}</span>
       </div>
     </div>
 
     <div class="project-card__body u-stack u-stack--md">
-      <div class="u-flex-between">
-        <p class="u-meta">{{ project.year }}</p>
-        <p class="u-meta">0{{ index + 1 }}</p>
-      </div>
-
-      <div class="u-stack u-stack--sm">
-        <h3 class="u-title-sm">{{ project.title }}</h3>
+      <div class="u-stack u-stack--xs">
+        <div class="project-card__heading">
+          <h3 class="u-title-sm">{{ project.title }}</h3>
+          <span class="u-meta">{{ project.year }}</span>
+        </div>
         <p class="u-body u-text-pretty">{{ project.description }}</p>
       </div>
 
-      <div class="u-cluster u-cluster--sm">
-        <UiBadge
-          v-for="tag in project.tags"
-          :key="tag"
-          :label="tag"
-        />
-      </div>
+      <p class="project-card__stack">
+        <span
+          v-for="(tech, i) in project.stack"
+          :key="tech"
+        >
+          {{ tech }}<template v-if="i < project.stack.length - 1">, </template>
+        </span>
+      </p>
 
-      <a
-        v-if="project.href"
-        :href="project.href"
-        class="u-link u-link--accent u-underline"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Ver proyecto
-        <Icon name="lucide:arrow-up-right" size="16" aria-hidden="true" />
-      </a>
+      <p class="project-card__links">
+        <a
+          v-if="project.href"
+          :href="project.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-card__link"
+        >
+          Código en GitHub
+        </a>
+        <template v-if="project.href && project.demoHref">
+          <span aria-hidden="true"> | </span>
+        </template>
+        <a
+          v-if="project.demoHref"
+          :href="project.demoHref"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-card__link"
+        >
+          Demo en vivo
+        </a>
+      </p>
     </div>
   </article>
 </template>
@@ -58,6 +75,8 @@ defineProps<{
 .project-card {
   display: grid;
   gap: var(--space-6);
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-border);
 }
 
 .project-card__visual {
@@ -70,60 +89,78 @@ defineProps<{
 
 .project-card__visual--forest {
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.35), transparent 50%),
-    linear-gradient(145deg, #4a6b58 0%, #2f4539 48%, #1f2f27 100%);
+    radial-gradient(ellipse at 30% 20%, rgba(0, 112, 243, 0.35), transparent 50%),
+    linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
 }
 
 .project-card__visual--stone {
   background:
-    radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.28), transparent 45%),
-    linear-gradient(160deg, #a8a299 0%, #7d786e 45%, #4f4b44 100%);
+    radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.08), transparent 45%),
+    linear-gradient(160deg, #27272a 0%, #18181b 100%);
 }
 
 .project-card__visual--mist {
   background:
-    radial-gradient(ellipse at 40% 60%, rgba(255, 255, 255, 0.4), transparent 55%),
-    linear-gradient(180deg, #d8d4cb 0%, #b7b2a7 50%, #8f8a80 100%);
+    radial-gradient(ellipse at 40% 60%, rgba(0, 112, 243, 0.2), transparent 55%),
+    linear-gradient(180deg, #3f3f46 0%, #18181b 100%);
 }
 
 .project-card__visual--ink {
   background:
-    radial-gradient(ellipse at 60% 20%, rgba(255, 255, 255, 0.12), transparent 40%),
-    linear-gradient(150deg, #2a2a2a 0%, #1c1c1c 55%, #111 100%);
+    radial-gradient(ellipse at 60% 20%, rgba(255, 255, 255, 0.06), transparent 40%),
+    linear-gradient(150deg, #111111 0%, #000000 100%);
 }
 
 .project-card__frame {
   position: absolute;
-  inset: 1.25rem;
+  inset: 1rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(248, 247, 244, 0.22);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-}
-
-.project-card__mark {
-  width: 1.75rem;
-  height: 1.75rem;
-  border: 1px solid rgba(248, 247, 244, 0.55);
-  border-radius: 50%;
-}
-
-.project-card__caption {
-  color: rgba(248, 247, 244, 0.88);
-  font-size: var(--text-xl);
-  font-style: italic;
-  letter-spacing: var(--tracking-snug);
+  align-items: start;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
 }
 
 .project-card__body {
   max-width: 36rem;
 }
 
+.project-card__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.project-card__stack {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  line-height: var(--leading-relaxed);
+}
+
+.project-card__links {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.project-card__link {
+  color: var(--color-accent);
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.project-card__link:hover {
+  border-bottom-color: var(--color-accent);
+}
+
 @media (min-width: 900px) {
   .project-card {
-    grid-template-columns: 1.35fr 1fr;
+    grid-template-columns: 1.25fr 1fr;
     align-items: center;
     gap: var(--space-10);
   }

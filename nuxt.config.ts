@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxt/fonts', '@nuxt/icon'],
   icon: {
     collections: ['lucide'],
     serverBundle: 'local',
@@ -11,30 +11,20 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: 'Geist', provider: 'google' },
-      {
-        name: 'Instrument Serif',
-        provider: 'google',
-        weights: [400],
-        styles: ['normal', 'italic'],
-      },
-      {
-        name: 'Chango',
-        provider: 'google',
-        weights: [400],
-      },
+      { name: 'Geist Mono', provider: 'google' },
     ],
   },
   app: {
     head: {
       htmlAttrs: { lang: 'es' },
-      title: 'Lucho Díaz — Frontend Developer',
+      title: 'Lucho Díaz — Frontend Engineer',
       meta: [
         {
           name: 'description',
           content:
-            'Frontend Developer · Vue 3 y TypeScript · Desarrollo interfaces de aplicaciones SaaS centradas en la experiencia de usuario',
+            'Frontend Engineer en WeWelcom. Productos SaaS desde cero con Vue 3 y TypeScript. Arquitectura frontend, UX y evolución de producto.',
         },
-        { name: 'theme-color', content: '#F8F7F4' },
+        { name: 'theme-color', content: '#FAFAFA' },
       ],
       script: [
         {

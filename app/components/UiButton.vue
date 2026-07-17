@@ -26,7 +26,7 @@ withDefaults(
   >
     <slot />
     <span v-if="icon || $slots.icon" class="ui-btn__icon" aria-hidden="true">
-      <Icon v-if="icon" :name="icon" size="16" />
+      <Icon v-if="icon" :name="icon" size="15" />
       <slot v-else name="icon" />
     </span>
   </a>
@@ -38,7 +38,7 @@ withDefaults(
   >
     <slot />
     <span v-if="icon || $slots.icon" class="ui-btn__icon" aria-hidden="true">
-      <Icon v-if="icon" :name="icon" size="16" />
+      <Icon v-if="icon" :name="icon" size="15" />
       <slot v-else name="icon" />
     </span>
   </button>
@@ -49,33 +49,29 @@ withDefaults(
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  min-height: 2.75rem;
-  padding: 0.7rem 1.25rem;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.9rem;
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: var(--tracking-snug);
   line-height: 1;
   transition:
-    background-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
-}
-
-.ui-btn:active {
-  transform: translateY(1px);
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
 }
 
 .ui-btn--primary {
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  background: var(--color-text);
+  color: var(--color-bg);
   border: 1px solid transparent;
 }
 
 .ui-btn--primary:hover {
-  background: var(--color-accent-hover);
+  opacity: 0.9;
 }
 
 .ui-btn--ghost {
@@ -85,8 +81,7 @@ withDefaults(
 }
 
 .ui-btn--ghost:hover {
-  border-color: var(--color-text);
-  background: var(--color-bg-elevated);
+  background: var(--color-bg-subtle);
 }
 
 .ui-btn--text {
@@ -102,10 +97,5 @@ withDefaults(
 
 .ui-btn__icon {
   display: inline-flex;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.ui-btn:hover .ui-btn__icon {
-  transform: translateX(2px);
 }
 </style>

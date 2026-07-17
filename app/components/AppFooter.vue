@@ -7,32 +7,19 @@ const year = new Date().getFullYear()
 <template>
   <footer class="footer">
     <UiContainer>
-      <div class="footer__top">
-        <div class="u-stack u-stack--sm">
-          <p class="font-chango footer__brand">{{ site.name }}</p>
-          <p class="u-meta">{{ site.role }} · {{ site.location }}</p>
-        </div>
-
-        <nav class="u-cluster u-cluster--lg" aria-label="Social">
+      <div class="footer__row">
+        <p class="u-meta">
+          © {{ year }} {{ site.fullName }}
+        </p>
+        <nav class="footer__links" aria-label="Social">
           <a
-            v-for="social in site.socials"
-            :key="social.label"
-            :href="social.href"
-            class="footer__social u-link"
-            :target="social.href.startsWith('http') ? '_blank' : undefined"
-            :rel="social.href.startsWith('http') ? 'noopener noreferrer' : undefined"
-          >
-            <Icon :name="social.icon" size="18" aria-hidden="true" />
-            <span class="u-underline">{{ social.label }}</span>
-          </a>
+            :href="site.linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__link"
+          >LinkedIn</a>
+          <a :href="`mailto:${site.email}`" class="footer__link">Email</a>
         </nav>
-      </div>
-
-      <hr class="u-divider footer__divider" />
-
-      <div class="footer__bottom">
-        <p class="u-meta">© {{ year }} {{ site.name }}</p>
-        <p class="u-meta footer__note">Hecho con calma y atención al detalle.</p>
       </div>
     </UiContainer>
   </footer>
@@ -40,48 +27,36 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
-  padding-block: var(--space-16) var(--space-10);
+  padding-block: var(--space-10);
   border-top: 1px solid var(--color-border);
 }
 
-.footer__top {
+.footer__row {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-4);
 }
 
-.footer__brand {
-  font-size: var(--text-2xl);
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
 }
 
-.footer__social {
+.footer__link {
   font-size: var(--text-sm);
   color: var(--color-text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
-.footer__social:hover {
+.footer__link:hover {
   color: var(--color-accent);
 }
 
-.footer__divider {
-  margin-block: var(--space-8);
-}
-
-.footer__bottom {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.footer__note {
-  font-style: italic;
-}
-
-@media (min-width: 768px) {
-  .footer__top,
-  .footer__bottom {
+@media (min-width: 640px) {
+  .footer__row {
     flex-direction: row;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
   }
 }

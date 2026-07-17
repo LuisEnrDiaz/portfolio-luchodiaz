@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    name: string
+    name: string;
   }>(),
   {},
-)
+);
 
 const iconMap: Record<string, string> = {
-  music: 'lucide:music-2',
-  games: 'lucide:gamepad-2',
-  mountain: 'lucide:mountain',
-  design: 'lucide:pen-tool',
-}
+  music: "lucide:music-2",
+  games: "lucide:gamepad-2",
+  mountain: "lucide:mountain",
+  design: "lucide:pen-tool",
+};
 </script>
 
 <template>
