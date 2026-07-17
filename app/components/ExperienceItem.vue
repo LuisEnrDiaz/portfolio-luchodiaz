@@ -32,18 +32,6 @@ defineProps<{
     </div>
 
     <div class="experience-item__block u-stack u-stack--sm">
-      <h4 class="experience-item__label">Productos desarrollados</h4>
-      <ul class="experience-item__list">
-        <li
-          v-for="(product, i) in item.products"
-          :key="i"
-        >
-          {{ product }}
-        </li>
-      </ul>
-    </div>
-
-    <div class="experience-item__block u-stack u-stack--sm">
       <h4 class="experience-item__label">Stack</h4>
       <p class="experience-item__stack">
         {{ item.stack.join(' · ') }}

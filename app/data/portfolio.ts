@@ -58,7 +58,6 @@ export const site = {
 }
 
 export const navLinks: NavLink[] = [
-  { label: 'Proyectos', href: '#proyectos' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Stack', href: '#stack' },
   { label: 'Experiencia', href: '#experiencia' },

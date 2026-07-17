@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import SectionsHero from '~/components/sections/SectionHero.vue'
-import SectionsProjects from '~/components/sections/SectionProjects.vue'
 import SectionsAbout from '~/components/sections/SectionAbout.vue'
 import SectionsStack from '~/components/sections/SectionStack.vue'
 import SectionsExperience from '~/components/sections/SectionExperience.vue'
@@ -11,7 +10,6 @@ import SectionsExperience from '~/components/sections/SectionExperience.vue'
     <AppHeader />
     <main>
       <SectionsHero />
-      <SectionsProjects />
       <SectionsAbout />
       <SectionsStack />
       <SectionsExperience />
