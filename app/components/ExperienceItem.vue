@@ -20,7 +20,7 @@ defineProps<{
     </header>
 
     <div class="experience-item__block u-stack u-stack--sm">
-      <h4 class="experience-item__label">Responsabilidades</h4>
+      <h4 class="experience-item__label">Qué hago</h4>
       <ul class="experience-item__list">
         <li
           v-for="(line, i) in item.responsibilities"
@@ -29,13 +29,6 @@ defineProps<{
           {{ line }}
         </li>
       </ul>
-    </div>
-
-    <div class="experience-item__block u-stack u-stack--sm">
-      <h4 class="experience-item__label">Stack</h4>
-      <p class="experience-item__stack">
-        {{ item.stack.join(' · ') }}
-      </p>
     </div>
   </article>
 </template>
@@ -100,14 +93,6 @@ defineProps<{
   height: 0.3rem;
   border-radius: 50%;
   background: var(--color-accent);
-}
-
-.experience-item__stack {
-  font-size: var(--text-sm);
-  color: var(--color-text-tertiary);
-  font-family: var(--font-mono);
-  line-height: var(--leading-relaxed);
-  max-width: 44rem;
 }
 
 @media (min-width: 900px) {

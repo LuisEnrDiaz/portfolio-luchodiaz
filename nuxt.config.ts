@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Frontend Engineer en WeWelcom. Productos SaaS desde cero con Vue 3 y TypeScript. Arquitectura frontend, UX y evolución de producto.',
+            'Construyo productos digitales de principio a fin. Diseño y desarrollo aplicaciones rápidas, intuitivas y escalables.',
         },
         { name: 'theme-color', content: '#FAFAFA' },
       ],

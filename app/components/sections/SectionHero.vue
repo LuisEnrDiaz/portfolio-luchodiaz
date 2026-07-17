@@ -19,9 +19,15 @@ useGsapHero(root)
           {{ site.greeting }}
         </h1>
 
-        <p data-gsap="hero" class="u-lead u-text-pretty hero__statement">
-          {{ site.statement }}
-        </p>
+        <div data-gsap="hero" class="hero__statements u-stack u-stack--sm">
+          <p
+            v-for="(line, i) in site.statements"
+            :key="i"
+            class="u-lead u-text-pretty"
+          >
+            {{ line }}
+          </p>
+        </div>
 
         <nav data-gsap="hero" class="hero__links" aria-label="Perfiles">
           <a
@@ -77,8 +83,8 @@ useGsapHero(root)
   max-width: 16ch;
 }
 
-.hero__statement {
-  max-width: 34rem;
+.hero__statements {
+  max-width: 36rem;
 }
 
 .hero__links {

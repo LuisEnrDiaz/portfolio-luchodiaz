@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { site } from '~/data/portfolio'
+import { site } from "~/data/portfolio";
 
-const root = ref<HTMLElement | null>(null)
-useGsapReveal(root)
+const root = ref<HTMLElement | null>(null);
+useGsapReveal(root);
 </script>
 
 <template>
@@ -10,10 +10,7 @@ useGsapReveal(root)
     <div ref="root">
       <UiContainer narrow>
         <div data-gsap="reveal" class="about u-stack u-stack--lg">
-          <UiSectionHeading
-            eyebrow="Sobre mí"
-            title="Frontend Engineer"
-          />
+          <UiSectionHeading title="Sobre mí" />
           <div class="about__copy u-stack u-stack--md">
             <p
               v-for="(paragraph, i) in site.about"
