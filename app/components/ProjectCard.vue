@@ -69,6 +69,15 @@ defineProps<{
             {{ project.demoLabel ?? 'Demo en vivo' }}
             <span class="project-card__arrow" aria-hidden="true">↗</span>
           </a>
+          <a
+            v-if="project.downloadHref"
+            :href="project.downloadHref"
+            download
+            class="project-card__link"
+          >
+            <Icon name="lucide:download" size="16" aria-hidden="true" />
+            {{ project.downloadLabel ?? 'Descargar' }}
+          </a>
         </p>
       </div>
     </div>

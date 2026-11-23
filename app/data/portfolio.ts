@@ -15,6 +15,8 @@ export interface Project {
   image?: string;
   imageAlt?: string;
   visual?: "route";
+  downloadHref?: string;
+  downloadLabel?: string;
   tone: "forest" | "stone" | "mist" | "ink";
 }
 
@@ -126,6 +128,8 @@ export const projects: Project[] = [
     demoHref: "https://madridalpaso.luchodiaz.dev",
     demoLabel: "Abrir la app",
     visual: "route",
+    downloadHref: "/downloads/madrid-al-paso.apk",
+    downloadLabel: "Descargar APK · Android",
     tone: "forest",
   },
 ];
