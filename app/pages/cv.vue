@@ -3,7 +3,7 @@ import {
   education,
   experiences,
   languages,
-  projects,
+  products,
   site,
   techGroups,
   tools,
@@ -83,10 +83,10 @@ function printCv() {
         </ul>
         <h3 class="cv__sub">Productos</h3>
         <ul>
-          <li v-for="project in projects" :key="project.id">
-            <strong>{{ project.title }}.</strong>
-            {{ project.description }}
-            Stack: {{ project.stack.join(", ") }}.
+          <li v-for="product in products" :key="product.id">
+            <strong>{{ product.title }}.</strong>
+            {{ product.description }}
+            Stack: {{ product.stack.join(", ") }}.
           </li>
         </ul>
       </section>

@@ -104,6 +104,46 @@ export const navLinks: NavLink[] = [
   { label: "Proyectos", href: "#proyectos" },
 ];
 
+/** Productos de WeWelcom: se usan en el CV (no en la sección Proyectos de la home). */
+export const products: Project[] = [
+  {
+    id: "wecopilot",
+    title: "WeCopilot",
+    year: "WeWelcom",
+    description:
+      "Aplicación del restaurante: carta, reservas, takeaway, kiosko, sala y eventos. El equipo opera en tiempo real y el cliente completa sus flujos en el mismo producto.",
+    stack: ["Vue 3", "Pinia", "Capacitor", "Sass", "WebSockets"],
+    tone: "forest",
+  },
+  {
+    id: "weadmin",
+    title: "WeAdmin",
+    year: "WeWelcom",
+    description:
+      "Panel del local: catálogo, personal, copilot, eventos, integraciones de TPV y reservas, y KPIs en tiempo real. Optimicé el cálculo de datos: de más de 4.000 iteraciones a menos de 1.000, más de un 75 % menos de carga.",
+    stack: ["Vue 3", "TypeScript", "Vite", "Tailwind CSS", "ApexCharts"],
+    tone: "ink",
+  },
+  {
+    id: "wepass",
+    title: "WePass",
+    year: "WeWelcom",
+    description:
+      "Experiencia de invitado en eventos. Invitación, acceso y sincronización en tiempo real cuando el anfitrión valida el QR.",
+    stack: ["Vue 3", "Pinia", "Sass", "WebSockets", "SSE"],
+    tone: "stone",
+  },
+  {
+    id: "wewelcom-io",
+    title: "wewelcom.io",
+    year: "WeWelcom",
+    description:
+      "Alta de nuevos clientes y presentación del hardware, conectadas a la configuración del producto.",
+    stack: ["Vue 3", "Vuex", "Vue Router", "Bootstrap", "ECharts"],
+    tone: "mist",
+  },
+];
+
 export const projects: Project[] = [
   {
     id: "wewelcom-io",
