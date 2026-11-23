@@ -1,168 +1,271 @@
 <script setup lang="ts">
 import { site } from '~/data/portfolio'
+
+const root = ref<HTMLElement | null>(null)
+useGsapHero(root)
+useSpotlight(root)
+
+const words = site.greeting.split(' ')
+const lastWord = words.length - 1
 </script>
 
 <template>
-  <section id="inicio" class="hero u-grain">
+  <section id="inicio" ref="root" class="hero u-grid-bg">
+    <div class="hero__spot" aria-hidden="true" />
+    <div class="hero__glow hero__glow--a" aria-hidden="true" />
+    <div class="hero__glow hero__glow--b" aria-hidden="true" />
+
     <UiContainer class="hero__inner">
-      <div class="hero__content u-stack u-stack--lg">
-        <p class="u-eyebrow hero__eyebrow">{{ site.role }}</p>
+      <div class="hero__layout">
+        <div class="hero__content u-stack u-stack--lg">
+          <p data-gsap="hero" class="hero__eyebrow">
+            <span class="hero__live" aria-hidden="true" />
+            {{ site.role }} · {{ site.location }}
+          </p>
 
-        <h1 class="u-display font-chango u-text-balance hero__brand">
-          {{ site.name }}
-        </h1>
+          <h1 class="hero__title">
+            <span class="u-sr-only">{{ site.greeting }}</span>
+            <span
+              v-for="(word, i) in words"
+              :key="i"
+              class="hero__mask"
+              aria-hidden="true"
+            >
+              <span
+                data-gsap="mask"
+                class="hero__word"
+                :class="{ 'hero__word--accent': i === lastWord }"
+              >{{ word }}</span>
+            </span>
+          </h1>
 
-        <p class="u-lead u-text-pretty hero__lead">
-          {{ site.description }}
-        </p>
+          <div data-gsap="hero" class="hero__statements u-stack u-stack--sm">
+            <p
+              v-for="(line, i) in site.statements"
+              :key="i"
+              class="u-lead u-text-pretty"
+            >
+              {{ line }}
+            </p>
+          </div>
 
-        <div class="u-cluster u-cluster--lg hero__actions">
-          <UiButton href="#proyectos" icon="lucide:arrow-right">
-            Ver proyectos
-          </UiButton>
-          <UiButton href="#contacto" variant="ghost">
-            Hablar
-          </UiButton>
+          <nav data-gsap="hero" class="hero__links" aria-label="Perfiles">
+            <a
+              :href="site.linkedin"
+              class="hero__link hero__link--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="lucide:linkedin" size="15" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a :href="`mailto:${site.email}`" class="hero__link">
+              <Icon name="lucide:mail" size="15" aria-hidden="true" />
+              Email
+            </a>
+            <NuxtLink to="/cv" class="hero__link">
+              <Icon name="lucide:file-text" size="15" aria-hidden="true" />
+              CV
+            </NuxtLink>
+          </nav>
+        </div>
+
+        <div data-gsap="hero" class="hero__visual">
+          <HeroOrbits />
         </div>
       </div>
-
-      <aside class="hero__aside" aria-hidden="true">
-        <div class="hero__panel">
-          <div class="hero__horizon" />
-          <div class="hero__peak" />
-          <p class="hero__aside-text u-serif">
-            Código · Diseño · Naturaleza
-          </p>
-        </div>
-      </aside>
     </UiContainer>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <span class="u-meta">Desliza</span>
-      <span class="hero__scroll-line" />
-    </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
   position: relative;
-  min-height: calc(100svh - 4rem);
+  min-height: calc(100svh - 3.5rem);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: clamp(3rem, 8vh, 6rem) clamp(4rem, 10vh, 7rem);
+  align-items: center;
+  padding-block: clamp(4rem, 12vh, 8rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 20%, var(--color-accent-soft), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 10% 90%, color-mix(in srgb, var(--color-text) 4%, transparent), transparent 50%),
-    var(--color-bg);
+}
+
+.hero__spot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    36rem circle at var(--mx, 70%) var(--my, 30%),
+    var(--color-accent-soft),
+    transparent 62%
+  );
+}
+
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-glow);
+  filter: blur(110px);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+  animation: hero-drift 20s ease-in-out infinite;
+}
+
+.hero__glow--a {
+  top: -10rem;
+  right: -8rem;
+  width: 32rem;
+  height: 32rem;
+}
+
+.hero__glow--b {
+  bottom: -8rem;
+  left: -10rem;
+  width: 26rem;
+  height: 26rem;
+  opacity: 0.4;
+  animation-delay: -8s;
 }
 
 .hero__inner {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__layout {
   display: grid;
   gap: var(--space-12);
   align-items: center;
-  width: 100%;
+}
+
+.hero__content {
+  max-width: 42rem;
 }
 
 .hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--color-accent-muted);
 }
 
-.hero__brand {
-  max-width: 12ch;
+.hero__live {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: hero-blink 2.4s ease-in-out infinite;
 }
 
-.hero__lead {
-  max-width: 28rem;
+.hero__title {
+  margin: 0;
+  font-size: clamp(3.25rem, 8.4vw, 7.25rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
 }
 
-.hero__aside {
-  display: none;
-}
-
-.hero__panel {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  max-height: 34rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
+.hero__mask {
+  display: inline-block;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, #e8e4db 0%, #d5d0c5 38%, #9aa897 72%, #4f6356 100%);
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  margin-right: 0.22em;
 }
 
-.hero__horizon {
-  position: absolute;
-  inset: auto 0 38% 0;
-  height: 1px;
-  background: rgba(248, 247, 244, 0.35);
+.hero__word {
+  display: inline-block;
 }
 
-.hero__peak {
-  position: absolute;
-  left: 18%;
-  right: 22%;
-  bottom: 18%;
-  height: 42%;
-  background: linear-gradient(180deg, transparent 0%, rgba(28, 28, 28, 0.18) 100%);
-  clip-path: polygon(18% 100%, 48% 12%, 55% 28%, 72% 8%, 100% 100%, 0 100%);
+.hero__word--accent {
+  color: var(--color-accent-muted);
 }
 
-.hero__aside-text {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1.25rem;
-  color: rgba(248, 247, 244, 0.9);
-  font-size: var(--text-lg);
-  font-style: italic;
+.hero__statements {
+  max-width: 36rem;
 }
 
-.hero__scroll {
-  position: absolute;
-  left: var(--gutter);
-  bottom: 1.5rem;
+.hero__links {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hero__link {
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
-  color: var(--color-text-tertiary);
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  transition:
+    transform 400ms var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
 }
 
-.hero__scroll-line {
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--color-border-strong);
-  transform-origin: left center;
-  animation: scroll-pulse 2.4s var(--ease-in-out) infinite;
+.hero__link:hover {
+  transform: translateY(-2px);
+  background: var(--color-bg-subtle);
 }
 
-@keyframes scroll-pulse {
-  0%,
-  100% {
-    transform: scaleX(0.55);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
+.hero__link--primary {
+  border-color: transparent;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.hero__link--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.hero__visual {
+  min-width: 0;
 }
 
 @media (min-width: 960px) {
-  .hero__inner {
-    grid-template-columns: 1.15fr 0.85fr;
+  .hero__layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     gap: var(--space-16);
   }
+}
 
-  .hero__aside {
-    display: block;
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
   }
+  50% {
+    transform: translate(3rem, -2.25rem);
+  }
+}
 
-  .hero__scroll {
-    left: 50%;
-    transform: translateX(-50%);
+@keyframes hero-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__glow,
+  .hero__live {
+    animation: none;
   }
 }
 </style>

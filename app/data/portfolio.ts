@@ -1,144 +1,172 @@
 export interface NavLink {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 export interface Project {
-  id: string
-  title: string
-  subtitle: string
-  description: string
-  year: string
-  tags: string[]
-  href?: string
-  tone: 'forest' | 'stone' | 'mist' | 'ink'
+  id: string;
+  title: string;
+  year: string;
+  description: string;
+  stack: string[];
+  href?: string;
+  demoHref?: string;
+  demoLabel?: string;
+  image?: string;
+  imageAlt?: string;
+  visual?: "route";
+  tone: "forest" | "stone" | "mist" | "ink";
+}
+
+export interface Stat {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
 }
 
 export interface TechGroup {
-  label: string
-  items: string[]
+  label: string;
+  items: string[];
 }
 
 export interface Experience {
-  company: string
-  role: string
-  period: string
-  description: string
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+  responsibilities: string[];
+  products: string[];
 }
 
-export interface Interest {
-  id: string
-  label: string
-  hint: string
+export interface Education {
+  school: string;
+  title: string;
+  detail: string;
 }
 
 export const site = {
-  name: 'Lucho Díaz',
-  role: 'Frontend Developer',
-  description:
-    'Vue 3 y TypeScript · Desarrollo interfaces de aplicaciones SaaS centradas en la experiencia de usuario',
-  email: 'hola@luchodiaz.dev',
-  location: 'España',
-  socials: [
-    { label: 'GitHub', href: 'https://github.com/', icon: 'lucide:github' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/', icon: 'lucide:linkedin' },
-    { label: 'Email', href: 'mailto:hola@luchodiaz.dev', icon: 'lucide:mail' },
+  name: "Lucho Díaz",
+  fullName: "Luis Enrique Díaz García",
+  role: "Responsable de producto y frontend",
+  greeting: "Hola, soy Lucho Díaz",
+  statements: [
+    "Hablo con el cliente, entiendo cómo trabaja el local y lo convierto en producto.",
+    "Me encargo del diseño y de la funcionalidad del frontend, hasta dejarlo en producción.",
   ],
-}
+  about: [
+    "Desde 2022 soy responsable de producto y del frontend en WeWelcom, un SaaS para la hostelería.",
+    "El trabajo empieza con el cliente: recojo lo que necesita el local y lo plasmo en la aplicación, tanto en el diseño como en el comportamiento.",
+    "El mejor software, para mí, es el que resuelve el problema del local sin añadir pasos de más.",
+  ],
+  email: "luis.enr.diaz.garcia@gmail.com",
+  phone: "+34 657 420 531",
+  location: "Madrid, España",
+  linkedin: "https://www.linkedin.com/in/luis-enr-diaz-garcia/",
+  socials: [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/luis-enr-diaz-garcia/",
+      icon: "lucide:linkedin",
+    },
+    {
+      label: "Email",
+      href: "mailto:luis.enr.diaz.garcia@gmail.com",
+      icon: "lucide:mail",
+    },
+  ],
+};
+
+export const stats: Stat[] = [
+  { value: 7, label: "Restaurantes" },
+  { value: 2, label: "Cadenas" },
+  { value: 200, suffix: "+", label: "Empleados a la vez" },
+  { value: 800, suffix: "+", label: "Personas en el menú digital" },
+  { value: 75, prefix: "−", suffix: " %", label: "Carga de cálculo en WeAdmin" },
+];
+
+export const education: Education = {
+  school: "ISDI Coders",
+  title: "Full Stack Development",
+  detail: "React, Redux, TypeScript, Jest, Node.js, Express y MongoDB.",
+};
+
+export const tools = ["Git", "GitHub", "Figma", "Chrome DevTools"];
+
+export const languages = "Español nativo. Inglés técnico.";
 
 export const navLinks: NavLink[] = [
-  { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Experiencia', href: '#experiencia' },
-  { label: 'Contacto', href: '#contacto' },
-]
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Stack", href: "#stack" },
+  { label: "Experiencia", href: "#experiencia" },
+  { label: "Proyectos", href: "#proyectos" },
+];
 
 export const projects: Project[] = [
   {
-    id: 'atelier',
-    title: 'Atelier',
-    subtitle: 'Plataforma creativa',
+    id: "wewelcom-io",
+    title: "wewelcom.io",
+    year: "WeWelcom",
     description:
-      'Un espacio digital para estudios de diseño. Flujos limpios, tipografía editorial y una interfaz que deja respirar el contenido.',
-    year: '2025',
-    tags: ['Nuxt', 'TypeScript', 'Design System'],
-    tone: 'forest',
+      "Alta de nuevos clientes y presentación del hardware, conectadas a la configuración del producto.",
+    stack: ["Vue 3", "Vuex", "Vue Router", "Bootstrap", "ECharts"],
+    demoHref: "https://wewelcom.io",
+    demoLabel: "Visitar sitio",
+    image: "/projects/wewelcom-io.png",
+    imageAlt: "Página de inicio de wewelcom.io",
+    tone: "mist",
   },
   {
-    id: 'summit',
-    title: 'Summit',
-    subtitle: 'App de rutas',
+    id: "madrid-al-paso",
+    title: "Madrid al Paso",
+    year: "Proyecto personal",
     description:
-      'Herramienta para planificar salidas de montaña. Mapas claros, datos esenciales y una UX calmada incluso con poca cobertura.',
-    year: '2024',
-    tags: ['Vue', 'Node', 'Maps API'],
-    tone: 'stone',
+      "Próximas llegadas de los autobuses de EMT Madrid a cualquier parada, en tiempo real, con mapa, paradas favoritas y avisos. Un proxy propio hace el login contra la API de EMT para que las credenciales nunca lleguen al navegador.",
+    stack: ["React", "TypeScript", "Vite", "Leaflet", "Capacitor"],
+    demoHref: "https://madridalpaso.luchodiaz.dev",
+    demoLabel: "Abrir la app",
+    visual: "route",
+    tone: "forest",
   },
-  {
-    id: 'vinyl',
-    title: 'Vinyl Room',
-    subtitle: 'Colección musical',
-    description:
-      'Catálogo personal de música con búsqueda inmediata, filtros sutiles y una presentación casi analógica del contenido.',
-    year: '2024',
-    tags: ['React', 'PostgreSQL', 'API'],
-    tone: 'mist',
-  },
-  {
-    id: 'frame',
-    title: 'Frame',
-    subtitle: 'CMS ligero',
-    description:
-      'Un CMS minimalista para portfolios y revistas digitales. Edición precisa, preview en tiempo real y despliegue sencillo.',
-    year: '2023',
-    tags: ['Next.js', 'Prisma', 'Auth'],
-    tone: 'ink',
-  },
-]
+];
 
 export const techGroups: TechGroup[] = [
   {
-    label: 'Frontend',
-    items: ['Vue', 'Nuxt', 'React', 'TypeScript', 'CSS', 'Design Systems'],
+    label: "Core",
+    items: ["Vue 3", "TypeScript", "JavaScript", "Pinia", "Vuex", "Vue Router"],
   },
   {
-    label: 'Backend',
-    items: ['Node.js', 'NestJS', 'PostgreSQL', 'Redis', 'REST', 'GraphQL'],
+    label: "Interfaz",
+    items: ["Vite", "Vue CLI", "Tailwind CSS", "Sass", "Bootstrap", "Capacitor"],
   },
   {
-    label: 'Tooling',
-    items: ['Git', 'Docker', 'CI/CD', 'Vitest', 'Figma', 'Observability'],
+    label: "Datos y tiempo real",
+    items: ["REST", "WebSockets", "Server-Sent Events", "ApexCharts", "ECharts"],
   },
-]
+];
 
 export const experiences: Experience[] = [
   {
-    company: 'Estudio Norte',
-    role: 'Full Stack Developer',
-    period: '2023 — Actualidad',
-    description:
-      'Diseño e implemento productos web de extremo a extremo. Priorizo claridad en la arquitectura, interfaces sobrias y entregas sostenibles.',
+    company: "WeWelcom",
+    role: "Responsable de producto y frontend",
+    period: "2022 — Actualidad",
+    summary:
+      "Responsable del producto y del frontend. Trato directo con el cliente y traducción de esas necesidades a diseño y funcionalidad en producción.",
+    responsibilities: [
+      "Hablo con el cliente, recojo cómo opera el local y convierto eso en alcance de producto.",
+      "Diseño la interfaz y desarrollo la funcionalidad del frontend, del flujo al detalle visual.",
+      "Mantengo cuatro aplicaciones en producción: WeCopilot, WeAdmin, WePass y wewelcom.io.",
+      "Doy servicio a 7 restaurantes y 2 cadenas, con más de 200 empleados simultáneos y más de 800 usuarios en el menú digital.",
+      "En WeAdmin optimicé el cálculo de datos: de más de 4.000 iteraciones a menos de 1.000, más de un 75 % menos de carga.",
+      "Adapto la arquitectura frontend a cada producto: TypeScript, Vite y Tailwind en el admin; Vue 3, Pinia, Sass y Capacitor en la app del restaurante.",
+      "Integro APIs REST, WebSockets y Server-Sent Events para la operativa y para KPIs en tiempo real.",
+      "Itero con el cliente en ciclos cortos y dejo los cambios en producción.",
+    ],
+    products: [
+      "WeCopilot — Carta, reservas, takeaway, kiosko, sala y eventos.",
+      "WeAdmin — Catálogo, personal, copilot, integraciones y KPIs en tiempo real.",
+      "WePass — Invitados de eventos, con acceso y sincronización en tiempo real.",
+      "wewelcom.io — Alta de clientes y hardware.",
+    ],
   },
-  {
-    company: 'Lumen Digital',
-    role: 'Frontend Developer',
-    period: '2021 — 2023',
-    description:
-      'Construí sistemas de UI y experiencias de producto para clientes en cultura, educación y SaaS. Enfoque en accesibilidad y detalle tipográfico.',
-  },
-  {
-    company: 'Freelance',
-    role: 'Desarrollador web',
-    period: '2019 — 2021',
-    description:
-      'Acompañé a marcas y freelancers en la creación de sitios y herramientas a medida, desde el concepto hasta el despliegue.',
-  },
-]
-
-export const interests: Interest[] = [
-  { id: 'music', label: 'Música', hint: 'Listas lentas, vinilos y foco' },
-  { id: 'games', label: 'Videojuegos', hint: 'Mundos, sistemas y craft' },
-  { id: 'mountain', label: 'Montaña', hint: 'Rutas, aire y silencio' },
-  { id: 'design', label: 'Diseño', hint: 'Tipografía, espacio y ritmo' },
-]
+];

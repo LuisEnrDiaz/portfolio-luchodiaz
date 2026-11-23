@@ -70,40 +70,43 @@ onBeforeUnmount(() => {
 
 <template>
   <header class="header" :class="{ 'header--scrolled': scrolled }">
-    <UiContainer class="header__inner">
-      <a href="#inicio" class="header__brand font-chango" @click="closeDrawer">
-        {{ site.name }}
-      </a>
-
-      <nav class="header__nav" aria-label="Principal">
-        <a
-          v-for="link in navLinks"
-          :key="link.href"
-          :href="link.href"
-          class="header__link u-underline"
-        >
-          {{ link.label }}
+    <UiContainer>
+      <div class="header__bar">
+        <a href="#inicio" class="header__brand" @click="closeDrawer">
+          <AppLogo :size="26" />
+          {{ site.name }}
         </a>
-      </nav>
 
-      <div class="header__actions">
-        <ThemeToggle />
+        <nav class="header__nav" aria-label="Principal">
+          <a
+            v-for="link in navLinks"
+            :key="link.href"
+            :href="link.href"
+            class="header__link"
+          >
+            {{ link.label }}
+          </a>
+        </nav>
 
-        <button
-          ref="toggleRef"
-          class="header__toggle"
-          type="button"
-          :aria-expanded="open ? 'true' : 'false'"
-          :aria-controls="DRAWER_ID"
-          @click="toggleDrawer"
-        >
-          <span class="u-sr-only">{{ open ? 'Cerrar menú' : 'Abrir menú' }}</span>
-          <span class="header__burger" :class="{ 'is-open': open }" aria-hidden="true">
-            <span class="header__burger-line" />
-            <span class="header__burger-line" />
-            <span class="header__burger-line" />
-          </span>
-        </button>
+        <div class="header__actions">
+          <ThemeToggle />
+
+          <button
+            ref="toggleRef"
+            class="header__toggle"
+            type="button"
+            :aria-expanded="open ? 'true' : 'false'"
+            :aria-controls="DRAWER_ID"
+            @click="toggleDrawer"
+          >
+            <span class="u-sr-only">{{ open ? 'Cerrar menú' : 'Abrir menú' }}</span>
+            <span class="header__burger" :class="{ 'is-open': open }" aria-hidden="true">
+              <span class="header__burger-line" />
+              <span class="header__burger-line" />
+              <span class="header__burger-line" />
+            </span>
+          </button>
+        </div>
       </div>
     </UiContainer>
   </header>
@@ -129,7 +132,10 @@ onBeforeUnmount(() => {
         :inert="!open"
       >
         <div class="nav-drawer__header">
-          <p class="nav-drawer__brand font-chango">{{ site.name }}</p>
+          <p class="nav-drawer__brand">
+            <AppLogo :size="24" />
+            {{ site.name }}
+          </p>
           <button
             class="nav-drawer__close"
             type="button"
@@ -144,7 +150,7 @@ onBeforeUnmount(() => {
           <li v-for="link in navLinks" :key="link.href">
             <a
               :href="link.href"
-              class="nav-drawer__link u-serif"
+              class="nav-drawer__link"
               @click="closeDrawer"
             >
               {{ link.label }}
@@ -163,9 +169,10 @@ onBeforeUnmount(() => {
   position: sticky;
   top: 0;
   z-index: 40;
-  backdrop-filter: blur(14px);
-  background: var(--color-header);
   border-bottom: 1px solid transparent;
+  background: var(--color-header);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
   transition:
     border-color var(--duration-base) var(--ease-out),
     background-color var(--duration-base) var(--ease-out);
@@ -176,28 +183,32 @@ onBeforeUnmount(() => {
   background: var(--color-header-scrolled);
 }
 
-.header__inner {
+.header__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 4rem;
+  min-height: 3.5rem;
   gap: var(--space-6);
 }
 
 .header__brand {
-  font-size: var(--text-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: var(--tracking-snug);
   transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .header__brand:hover {
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .header__nav {
   display: none;
   align-items: center;
-  gap: var(--space-6);
+  gap: 0.15rem;
 }
 
 .header__actions {
@@ -207,23 +218,28 @@ onBeforeUnmount(() => {
 }
 
 .header__link {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-md);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
 }
 
 .header__link:hover {
   color: var(--color-text);
+  background: var(--color-bg-subtle);
 }
 
 .header__toggle {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm);
-  transition: background-color 280ms var(--ease-out);
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .header__toggle:hover {
@@ -233,8 +249,8 @@ onBeforeUnmount(() => {
 .header__burger {
   position: relative;
   display: block;
-  width: 1.15rem;
-  height: 0.75rem;
+  width: 1.1rem;
+  height: 0.7rem;
 }
 
 .header__burger-line {
@@ -247,9 +263,9 @@ onBeforeUnmount(() => {
   background: currentColor;
   transform-origin: center;
   transition:
-    transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
-    top 480ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 400ms var(--ease-out),
+    opacity 200ms var(--ease-out),
+    top 400ms var(--ease-out);
 }
 
 .header__burger-line:nth-child(1) {
@@ -295,11 +311,9 @@ onBeforeUnmount(() => {
   position: absolute;
   inset: 0;
   background: var(--color-scrim);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
   opacity: 0;
-  transition:
-    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .nav-drawer-root.is-open .nav-drawer__scrim {
@@ -311,17 +325,16 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   bottom: 0;
-  width: min(20rem, 86vw);
+  width: min(20rem, 88vw);
   display: flex;
   flex-direction: column;
   gap: var(--space-10);
-  padding: var(--space-6) var(--space-6) var(--space-8);
+  padding: var(--space-6);
   background: var(--color-bg);
   border-right: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
   overflow-y: auto;
   transform: translateX(-100%);
-  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 500ms var(--ease-out);
 }
 
 .nav-drawer-root.is-open .nav-drawer {
@@ -332,13 +345,12 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  min-height: 2.75rem;
+  min-height: 2.5rem;
   opacity: 0;
-  transform: translateX(-0.75rem);
+  transform: translateX(-0.5rem);
   transition:
-    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1) 80ms,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
+    opacity 350ms var(--ease-out) 60ms,
+    transform 350ms var(--ease-out) 60ms;
 }
 
 .nav-drawer-root.is-open .nav-drawer__header {
@@ -347,22 +359,21 @@ onBeforeUnmount(() => {
 }
 
 .nav-drawer__brand {
-  font-size: var(--text-lg);
-  letter-spacing: var(--tracking-snug);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
 }
 
 .nav-drawer__close {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   color: var(--color-text-secondary);
-  transition:
-    background-color 280ms var(--ease-out),
-    color 280ms var(--ease-out),
-    transform 280ms var(--ease-out);
 }
 
 .nav-drawer__close:hover {
@@ -376,15 +387,17 @@ onBeforeUnmount(() => {
 
 .nav-drawer__link {
   display: block;
-  font-size: var(--text-2xl);
+  padding-block: 0.55rem;
+  font-size: var(--text-xl);
+  font-weight: 500;
   letter-spacing: var(--tracking-snug);
   color: var(--color-text);
   opacity: 0;
-  transform: translateX(-0.85rem);
+  transform: translateX(-0.5rem);
   transition:
-    color 280ms var(--ease-out),
-    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+    color var(--duration-fast) var(--ease-out),
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
 }
 
 .nav-drawer-root.is-open .nav-drawer__link {
@@ -393,23 +406,19 @@ onBeforeUnmount(() => {
 }
 
 .nav-drawer-root.is-open .nav-drawer__list li:nth-child(1) .nav-drawer__link {
+  transition-delay: 80ms;
+}
+.nav-drawer-root.is-open .nav-drawer__list li:nth-child(2) .nav-drawer__link {
   transition-delay: 120ms;
 }
-
-.nav-drawer-root.is-open .nav-drawer__list li:nth-child(2) .nav-drawer__link {
-  transition-delay: 170ms;
-}
-
 .nav-drawer-root.is-open .nav-drawer__list li:nth-child(3) .nav-drawer__link {
-  transition-delay: 220ms;
+  transition-delay: 160ms;
 }
-
 .nav-drawer-root.is-open .nav-drawer__list li:nth-child(4) .nav-drawer__link {
-  transition-delay: 270ms;
+  transition-delay: 200ms;
 }
-
 .nav-drawer-root.is-open .nav-drawer__list li:nth-child(5) .nav-drawer__link {
-  transition-delay: 320ms;
+  transition-delay: 240ms;
 }
 
 .nav-drawer__link:hover,
@@ -420,7 +429,7 @@ onBeforeUnmount(() => {
 .nav-drawer__meta {
   margin-top: auto;
   opacity: 0;
-  transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1) 280ms;
+  transition: opacity 400ms var(--ease-out) 200ms;
 }
 
 .nav-drawer-root.is-open .nav-drawer__meta {

@@ -14,24 +14,15 @@ defineProps<{
 .ui-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.7rem;
+  padding: 0.25rem 0.5rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: var(--color-bg-elevated);
+  background: var(--color-bg-subtle);
   color: var(--color-text-secondary);
-  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
-  line-height: 1;
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out);
-}
-
-.ui-badge:hover {
-  border-color: var(--color-accent-muted);
-  color: var(--color-accent);
-  background: var(--color-accent-soft);
+  line-height: 1.2;
 }
 </style>

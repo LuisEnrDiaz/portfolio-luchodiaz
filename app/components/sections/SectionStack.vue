@@ -1,76 +1,84 @@
 <script setup lang="ts">
 import { techGroups } from '~/data/portfolio'
+
+const items = techGroups.flatMap((group) => group.items)
 </script>
 
 <template>
-  <UiSection id="stack">
-    <UiContainer>
-      <div class="stack u-stack u-stack--xl">
-        <UiReveal>
-          <UiSectionHeading
-            eyebrow="Stack tecnológico"
-            title="Herramientas con criterio."
-            description="Prefiero un stack estable, legible y mantenible. Tecnología al servicio del producto, no al revés."
-          />
-        </UiReveal>
+  <section id="stack" class="marquee" aria-label="Stack">
+    <ul class="u-sr-only">
+      <li v-for="item in items" :key="item">{{ item }}</li>
+    </ul>
 
-        <div class="stack__grid u-grid u-grid--3">
-          <UiReveal
-            v-for="(group, index) in techGroups"
-            :key="group.label"
-            :delay="index * 80"
-            class="stack__group u-stack u-stack--md"
-          >
-            <p class="u-eyebrow">{{ group.label }}</p>
-            <ul class="stack__items u-stack u-stack--sm">
-              <li
-                v-for="item in group.items"
-                :key="item"
-                class="stack__item"
-              >
-                {{ item }}
-              </li>
-            </ul>
-          </UiReveal>
-        </div>
-      </div>
-    </UiContainer>
-  </UiSection>
+    <div class="marquee__track" aria-hidden="true">
+      <template v-for="copy in 2" :key="copy">
+        <span
+          v-for="item in items"
+          :key="`${copy}-${item}`"
+          class="marquee__item"
+        >
+          {{ item }}
+          <span class="marquee__sep" />
+        </span>
+      </template>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.stack__group {
-  padding: var(--space-8);
-  border-top: 1px solid var(--color-border);
+.marquee {
+  overflow: hidden;
+  padding-block: 1.6rem;
+  border-block: 1px solid var(--color-border);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
-.stack__item {
-  font-size: var(--text-base);
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 46s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 3rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
   color: var(--color-text-secondary);
-  padding-block: var(--space-2);
-  border-bottom: 1px solid var(--color-border);
-  transition: color var(--duration-fast) var(--ease-out), padding-left var(--duration-base) var(--ease-out);
 }
 
-.stack__item:last-child {
-  border-bottom: 0;
+.marquee__sep {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
 }
 
-.stack__item:hover {
-  color: var(--color-accent);
-  padding-left: var(--space-2);
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-@media (min-width: 768px) {
-  .stack__group {
-    border-top: 0;
-    border-left: 1px solid var(--color-border);
-    padding-inline: var(--space-8);
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
   }
 
-  .stack__group:first-child {
-    border-left: 0;
-    padding-left: 0;
+  .marquee__track {
+    animation: none;
   }
 }
 </style>
