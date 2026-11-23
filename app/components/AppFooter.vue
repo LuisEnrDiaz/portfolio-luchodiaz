@@ -45,6 +45,9 @@ const year = new Date().getFullYear()
 }
 
 .footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
   font-size: var(--text-sm);
   color: var(--color-text-tertiary);
   transition: color var(--duration-fast) var(--ease-out);

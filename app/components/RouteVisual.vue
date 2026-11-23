@@ -90,11 +90,11 @@ onMounted(() => {
 }
 
 .route-visual__badge-bg {
-  fill: #0178bc;
+  fill: var(--color-emt);
 }
 
 .route-visual__badge-text {
-  fill: #ffffff;
+  fill: var(--color-accent-ink);
   font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 700;

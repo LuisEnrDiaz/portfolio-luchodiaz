@@ -2,7 +2,6 @@
 import { education, languages, site, stats } from "~/data/portfolio";
 
 const root = ref<HTMLElement | null>(null);
-useGsapReveal(root);
 useGsapCounters(root);
 
 const [lead, ...rest] = site.about;
@@ -16,7 +15,6 @@ const closing = rest.pop();
         <div class="about u-stack u-stack--xl">
           <div data-gsap="reveal" class="about__top">
             <UiSectionHeading
-              eyebrow="Sobre mí"
               title="Del trato con el cliente a una aplicación en producción."
             />
             <div class="about__copy u-stack u-stack--md">
@@ -32,8 +30,8 @@ const closing = rest.pop();
                 {{ closing }}
               </p>
               <div class="about__meta u-stack u-stack--xs">
-                <p class="u-meta">{{ site.fullName }} · {{ site.location }}</p>
-                <p class="u-meta">{{ education.school }} — {{ education.title }}</p>
+                <p class="u-meta">{{ site.fullName }}, {{ site.location }}</p>
+                <p class="u-meta">{{ education.school }}, {{ education.title }}</p>
                 <p class="u-meta">{{ languages }}</p>
               </div>
             </div>
@@ -87,11 +85,6 @@ const closing = rest.pop();
   padding: var(--space-8) var(--space-6);
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  transition: background-color var(--duration-slow) var(--ease-out);
-}
-
-.about__stat:hover {
-  background: var(--color-bg-subtle);
 }
 
 .about__value {
@@ -104,11 +97,8 @@ const closing = rest.pop();
 }
 
 .about__label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  line-height: 1.5;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  line-height: 1.4;
   color: var(--color-text-secondary);
 }
 

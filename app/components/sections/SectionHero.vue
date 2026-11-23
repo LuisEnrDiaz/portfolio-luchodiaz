@@ -3,24 +3,17 @@ import { site } from '~/data/portfolio'
 
 const root = ref<HTMLElement | null>(null)
 useGsapHero(root)
-useSpotlight(root)
 
 const words = site.greeting.split(' ')
-const lastWord = words.length - 1
 </script>
 
 <template>
-  <section id="inicio" ref="root" class="hero u-grid-bg">
-    <div class="hero__spot" aria-hidden="true" />
-    <div class="hero__glow hero__glow--a" aria-hidden="true" />
-    <div class="hero__glow hero__glow--b" aria-hidden="true" />
-
+  <section id="inicio" ref="root" class="hero">
     <UiContainer class="hero__inner">
       <div class="hero__layout">
         <div class="hero__content u-stack u-stack--lg">
-          <p data-gsap="hero" class="hero__eyebrow">
-            <span class="hero__live" aria-hidden="true" />
-            {{ site.role }} · {{ site.location }}
+          <p data-gsap="hero" class="hero__role">
+            {{ site.role }}, {{ site.location }}
           </p>
 
           <h1 class="hero__title">
@@ -31,11 +24,7 @@ const lastWord = words.length - 1
               class="hero__mask"
               aria-hidden="true"
             >
-              <span
-                data-gsap="mask"
-                class="hero__word"
-                :class="{ 'hero__word--accent': i === lastWord }"
-              >{{ word }}</span>
+              <span data-gsap="mask" class="hero__word">{{ word }}</span>
             </span>
           </h1>
 
@@ -55,23 +44,10 @@ const lastWord = words.length - 1
               class="hero__link hero__link--primary"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <Icon name="lucide:linkedin" size="15" aria-hidden="true" />
-              LinkedIn
-            </a>
-            <a :href="`mailto:${site.email}`" class="hero__link">
-              <Icon name="lucide:mail" size="15" aria-hidden="true" />
-              Email
-            </a>
-            <NuxtLink to="/cv" class="hero__link">
-              <Icon name="lucide:file-text" size="15" aria-hidden="true" />
-              CV
-            </NuxtLink>
+            >Ver LinkedIn</a>
+            <a :href="`mailto:${site.email}`" class="hero__link">Escribir un email</a>
+            <NuxtLink to="/cv" class="hero__link">Abrir el CV</NuxtLink>
           </nav>
-        </div>
-
-        <div data-gsap="hero" class="hero__visual">
-          <HeroOrbits />
         </div>
       </div>
     </UiContainer>
@@ -84,47 +60,8 @@ const lastWord = words.length - 1
   min-height: calc(100svh - 3.5rem);
   display: flex;
   align-items: center;
-  padding-block: clamp(4rem, 12vh, 8rem);
-  overflow: hidden;
-}
-
-.hero__spot {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(
-    36rem circle at var(--mx, 70%) var(--my, 30%),
-    var(--color-accent-soft),
-    transparent 62%
-  );
-}
-
-.hero__glow {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--color-glow);
-  filter: blur(110px);
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 0;
-  animation: hero-drift 20s ease-in-out infinite;
-}
-
-.hero__glow--a {
-  top: -10rem;
-  right: -8rem;
-  width: 32rem;
-  height: 32rem;
-}
-
-.hero__glow--b {
-  bottom: -8rem;
-  left: -10rem;
-  width: 26rem;
-  height: 26rem;
-  opacity: 0.4;
-  animation-delay: -8s;
+  padding-top: clamp(4rem, 12vh, 8rem);
+  padding-bottom: 8rem;
 }
 
 .hero__inner {
@@ -133,42 +70,23 @@ const lastWord = words.length - 1
   z-index: 1;
 }
 
-.hero__layout {
-  display: grid;
-  gap: var(--space-12);
-  align-items: center;
-}
-
 .hero__content {
-  max-width: 42rem;
+  max-width: 40rem;
 }
 
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent-muted);
-}
-
-.hero__live {
-  width: 7px;
-  height: 7px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-accent);
-  animation: hero-blink 2.4s ease-in-out infinite;
+.hero__role {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
 }
 
 .hero__title {
   margin: 0;
+  text-wrap: balance;
   font-size: clamp(3.25rem, 8.4vw, 7.25rem);
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
 }
 
 .hero__mask {
@@ -184,12 +102,8 @@ const lastWord = words.length - 1
   display: inline-block;
 }
 
-.hero__word--accent {
-  color: var(--color-accent-muted);
-}
-
 .hero__statements {
-  max-width: 36rem;
+  max-width: 34rem;
 }
 
 .hero__links {
@@ -201,71 +115,31 @@ const lastWord = words.length - 1
 .hero__link {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
   min-height: 2.75rem;
-  padding: 0 1.1rem;
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-lg);
+  padding: 0 1.2rem;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius-sm);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text);
   transition:
-    transform 400ms var(--ease-out),
-    color var(--duration-fast) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    background-color var(--duration-base) var(--ease-out);
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 .hero__link:hover {
-  transform: translateY(-2px);
-  background: var(--color-bg-subtle);
+  background: var(--color-text);
+  color: var(--color-bg);
 }
 
 .hero__link--primary {
-  border-color: transparent;
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  border-color: var(--color-text);
+  background: var(--color-signal);
+  color: var(--color-accent-ink);
 }
 
 .hero__link--primary:hover {
-  background: var(--color-accent-hover);
-}
-
-.hero__visual {
-  min-width: 0;
-}
-
-@media (min-width: 960px) {
-  .hero__layout {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-    gap: var(--space-16);
-  }
-}
-
-@keyframes hero-drift {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(3rem, -2.25rem);
-  }
-}
-
-@keyframes hero-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__glow,
-  .hero__live {
-    animation: none;
-  }
+  background: var(--color-text);
+  color: var(--color-bg);
 }
 </style>

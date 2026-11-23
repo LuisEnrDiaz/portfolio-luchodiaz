@@ -11,8 +11,6 @@ defineProps<{
     <p class="experience-item__period">{{ item.period }}</p>
 
     <div class="experience-item__body">
-      <span class="experience-item__line" aria-hidden="true" />
-
       <div class="experience-item__content u-stack u-stack--lg">
         <header class="u-stack u-stack--sm">
           <h3 class="experience-item__company">{{ item.company }}</h3>
@@ -30,9 +28,6 @@ defineProps<{
               :key="i"
               class="experience-item__row"
             >
-              <span class="experience-item__n" aria-hidden="true">
-                {{ String(i + 1).padStart(2, '0') }}
-              </span>
               <span>{{ line }}</span>
             </li>
           </ol>
@@ -58,12 +53,11 @@ defineProps<{
 .experience-item {
   display: grid;
   gap: var(--space-6);
-  padding-block: var(--space-10);
+  padding-block: var(--space-8) var(--space-10);
   border-top: 1px solid var(--color-border);
 }
 
 .experience-item__period {
-  font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
 }
@@ -72,20 +66,6 @@ defineProps<{
   display: flex;
   gap: var(--space-6);
   min-width: 0;
-}
-
-.experience-item__line {
-  flex: 0 0 2px;
-  border-radius: 2px;
-  background-image: linear-gradient(
-    180deg,
-    var(--color-border) 0%,
-    var(--color-accent) 25%,
-    var(--color-border) 50%,
-    var(--color-border) 100%
-  );
-  background-size: 100% 400%;
-  animation: experience-sweep 6s linear infinite;
 }
 
 .experience-item__content {
@@ -112,11 +92,8 @@ defineProps<{
 }
 
 .experience-item__label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 700;
   color: var(--color-text-tertiary);
 }
 
@@ -131,50 +108,21 @@ defineProps<{
   border-top: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
-  transition: color var(--duration-base) var(--ease-out);
-}
-
-.experience-item__row:hover {
-  color: var(--color-text);
-}
-
-.experience-item__n {
-  flex: 0 0 1.75rem;
-  padding-top: 0.2rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-text-tertiary);
 }
 
 .experience-item__products {
   display: grid;
   gap: 0.5rem;
   max-width: 46rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
 }
 
-@keyframes experience-sweep {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 -300%;
-  }
-}
-
 @media (min-width: 900px) {
   .experience-item {
-    grid-template-columns: minmax(11rem, 0.45fr) 1.55fr;
-    gap: var(--space-16);
+    gap: var(--space-8);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .experience-item__line {
-    animation: none;
-  }
-}
 </style>
