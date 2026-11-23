@@ -26,6 +26,9 @@ export function useGsap() {
 
 /** Hero entrance: staggered fade + rise */
 export function useGsapHero(root: Ref<HTMLElement | null>) {
+  let ctx: gsap.Context | undefined
+  onBeforeUnmount(() => ctx?.revert())
+
   onMounted(async () => {
     await nextTick()
     if (!root.value) return
@@ -37,7 +40,16 @@ export function useGsapHero(root: Ref<HTMLElement | null>) {
     }
 
     const { gsap } = useGsap()
-    const ctx = gsap.context(() => {
+    ctx = gsap.context(() => {
+      const words = root.value!.querySelectorAll('[data-gsap="mask"]')
+      if (words.length) {
+        gsap.fromTo(
+          words,
+          { yPercent: 115 },
+          { yPercent: 0, duration: 1.2, stagger: 0.1, ease: 'expo.out' },
+        )
+      }
+
       const items = root.value!.querySelectorAll(selector)
       if (!items.length) return
 
@@ -55,8 +67,6 @@ export function useGsapHero(root: Ref<HTMLElement | null>) {
         },
       )
     }, root.value)
-
-    onBeforeUnmount(() => ctx.revert())
   })
 }
 
@@ -65,6 +75,9 @@ export function useGsapReveal(
   root: Ref<HTMLElement | null>,
   selector = '[data-gsap="reveal"]',
 ) {
+  let ctx: gsap.Context | undefined
+  onBeforeUnmount(() => ctx?.revert())
+
   onMounted(async () => {
     await nextTick()
     if (!root.value) return
@@ -75,7 +88,7 @@ export function useGsapReveal(
     }
 
     const { gsap } = useGsap()
-    const ctx = gsap.context(() => {
+    ctx = gsap.context(() => {
       const nodes = gsap.utils.toArray<HTMLElement>(selector)
       nodes.forEach((el) => {
         gsap.fromTo(
@@ -97,13 +110,14 @@ export function useGsapReveal(
         )
       })
     }, root.value)
-
-    onBeforeUnmount(() => ctx.revert())
   })
 }
 
 /** Project cards: fade in + light scrub on visual */
 export function useGsapProjectCards(root: Ref<HTMLElement | null>) {
+  let ctx: gsap.Context | undefined
+  onBeforeUnmount(() => ctx?.revert())
+
   onMounted(async () => {
     await nextTick()
     if (!root.value) return
@@ -114,7 +128,7 @@ export function useGsapProjectCards(root: Ref<HTMLElement | null>) {
     }
 
     const { gsap } = useGsap()
-    const ctx = gsap.context(() => {
+    ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>('[data-gsap="project"]')
       cards.forEach((card) => {
         const visual = card.querySelector('[data-gsap="project-visual"]')
@@ -154,7 +168,39 @@ export function useGsapProjectCards(root: Ref<HTMLElement | null>) {
         }
       })
     }, root.value)
+  })
+}
 
-    onBeforeUnmount(() => ctx.revert())
+/** Count-up for numbers marked with data-count (final value is server-rendered) */
+export function useGsapCounters(root: Ref<HTMLElement | null>) {
+  let ctx: gsap.Context | undefined
+  onBeforeUnmount(() => ctx?.revert())
+
+  onMounted(async () => {
+    await nextTick()
+    if (!root.value || reduceMotion()) return
+
+    const { gsap } = useGsap()
+    ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>('[data-count]').forEach((el) => {
+        const target = Number(el.dataset.count)
+        if (Number.isNaN(target)) return
+        const state = { value: 0 }
+        el.textContent = '0'
+
+        gsap.to(state, {
+          value: target,
+          duration: 1.8,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+          onUpdate: () => {
+            el.textContent = String(Math.round(state.value))
+          },
+          onComplete: () => {
+            el.textContent = String(target)
+          },
+        })
+      })
+    }, root.value)
   })
 }

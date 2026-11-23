@@ -13,7 +13,7 @@ useGsapProjectCards(root)
           <div data-gsap="project">
             <UiSectionHeading
               eyebrow="Trabajo"
-              title="Proyectos seleccionados"
+              title="Producto en producción y un proyecto propio"
             />
           </div>
 

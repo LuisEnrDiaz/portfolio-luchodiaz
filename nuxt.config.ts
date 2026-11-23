@@ -17,14 +17,21 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'es' },
-      title: 'Lucho Díaz — Frontend Engineer',
+      title: 'Lucho Díaz — Responsable de producto y frontend',
       meta: [
         {
           name: 'description',
           content:
-            'Construyo productos digitales de principio a fin. Diseño y desarrollo aplicaciones rápidas, intuitivas y escalables.',
+            'Responsable de producto y frontend en WeWelcom. Del trato con el cliente al diseño y la funcionalidad de aplicaciones Vue 3 en producción.',
         },
         { name: 'theme-color', content: '#FAFAFA' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
       ],
       script: [
         {

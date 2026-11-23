@@ -73,6 +73,7 @@ onBeforeUnmount(() => {
     <UiContainer>
       <div class="header__bar">
         <a href="#inicio" class="header__brand" @click="closeDrawer">
+          <AppLogo :size="26" />
           {{ site.name }}
         </a>
 
@@ -131,7 +132,10 @@ onBeforeUnmount(() => {
         :inert="!open"
       >
         <div class="nav-drawer__header">
-          <p class="nav-drawer__brand">{{ site.name }}</p>
+          <p class="nav-drawer__brand">
+            <AppLogo :size="24" />
+            {{ site.name }}
+          </p>
           <button
             class="nav-drawer__close"
             type="button"
@@ -188,6 +192,9 @@ onBeforeUnmount(() => {
 }
 
 .header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: var(--tracking-snug);
@@ -352,6 +359,9 @@ onBeforeUnmount(() => {
 }
 
 .nav-drawer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: var(--text-sm);
   font-weight: 600;
 }

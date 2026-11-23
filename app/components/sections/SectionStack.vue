@@ -1,61 +1,84 @@
 <script setup lang="ts">
 import { techGroups } from '~/data/portfolio'
 
-const root = ref<HTMLElement | null>(null)
-useGsapReveal(root)
+const items = techGroups.flatMap((group) => group.items)
 </script>
 
 <template>
-  <UiSection id="stack">
-    <div ref="root">
-      <UiContainer>
-        <div class="stack u-stack u-stack--xl">
-          <div data-gsap="reveal">
-            <UiSectionHeading
-              eyebrow="Stack"
-              title="Herramientas"
-            />
-          </div>
+  <section id="stack" class="marquee" aria-label="Stack">
+    <ul class="u-sr-only">
+      <li v-for="item in items" :key="item">{{ item }}</li>
+    </ul>
 
-          <div class="stack__grid">
-            <div
-              v-for="group in techGroups"
-              :key="group.label"
-              data-gsap="reveal"
-              class="stack__group u-stack u-stack--md"
-            >
-              <p class="u-eyebrow">{{ group.label }}</p>
-              <p class="stack__items">
-                {{ group.items.join(' · ') }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </UiContainer>
+    <div class="marquee__track" aria-hidden="true">
+      <template v-for="copy in 2" :key="copy">
+        <span
+          v-for="item in items"
+          :key="`${copy}-${item}`"
+          class="marquee__item"
+        >
+          {{ item }}
+          <span class="marquee__sep" />
+        </span>
+      </template>
     </div>
-  </UiSection>
+  </section>
 </template>
 
 <style scoped>
-.stack__grid {
-  display: grid;
-  gap: var(--space-8);
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-8);
+.marquee {
+  overflow: hidden;
+  padding-block: 1.6rem;
+  border-block: 1px solid var(--color-border);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
-.stack__items {
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 46s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 3rem;
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
   color: var(--color-text-secondary);
-  line-height: var(--leading-relaxed);
-  max-width: 28rem;
 }
 
-@media (min-width: 768px) {
-  .stack__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-10);
+.marquee__sep {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
+  }
+
+  .marquee__track {
+    animation: none;
   }
 }
 </style>

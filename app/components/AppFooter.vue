@@ -19,6 +19,7 @@ const year = new Date().getFullYear()
             class="footer__link"
           >LinkedIn</a>
           <a :href="`mailto:${site.email}`" class="footer__link">Email</a>
+          <NuxtLink to="/cv" class="footer__link">CV</NuxtLink>
         </nav>
       </div>
     </UiContainer>

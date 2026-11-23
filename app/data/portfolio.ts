@@ -11,7 +11,18 @@ export interface Project {
   stack: string[];
   href?: string;
   demoHref?: string;
+  demoLabel?: string;
+  image?: string;
+  imageAlt?: string;
+  visual?: "route";
   tone: "forest" | "stone" | "mist" | "ink";
+}
+
+export interface Stat {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
 }
 
 export interface TechGroup {
@@ -28,22 +39,28 @@ export interface Experience {
   products: string[];
 }
 
+export interface Education {
+  school: string;
+  title: string;
+  detail: string;
+}
+
 export const site = {
   name: "Lucho Díaz",
   fullName: "Luis Enrique Díaz García",
-  role: "Desarrollador Frontend especializado en producto",
+  role: "Responsable de producto y frontend",
   greeting: "Hola, soy Lucho Díaz",
   statements: [
-    "Transformo ideas en productos digitales que la gente disfruta utilizando.",
-    "Diseño y desarrollo aplicaciones intuitivas, escalables y fáciles de mantener, combinando producto, experiencia de usuario y arquitectura frontend.",
+    "Hablo con el cliente, entiendo cómo trabaja el local y lo convierto en producto.",
+    "Me encargo del diseño y de la funcionalidad del frontend, hasta dejarlo en producción.",
   ],
   about: [
-    "Me especializo en construir productos digitales desde cero, participando en todo el proceso: definición funcional, experiencia de usuario, arquitectura frontend e implementación.",
-    "Disfruto convirtiendo problemas reales en productos simples, rápidos y fáciles de mantener, equilibrando experiencia de usuario, necesidades de negocio y calidad técnica.",
-    "Creo que el mejor software es el que resuelve problemas reales sin añadir complejidad innecesaria.",
-    "Actualmente soy responsable del desarrollo frontend de una plataforma SaaS para el sector de la hostelería, participando en la definición, desarrollo y evolución continua del producto.",
+    "Desde 2022 soy responsable de producto y del frontend en WeWelcom, un SaaS para la hostelería.",
+    "El trabajo empieza con el cliente: recojo lo que necesita el local y lo plasmo en la aplicación, tanto en el diseño como en el comportamiento.",
+    "El mejor software, para mí, es el que resuelve el problema del local sin añadir pasos de más.",
   ],
   email: "luis.enr.diaz.garcia@gmail.com",
+  phone: "+34 657 420 531",
   location: "Madrid, España",
   linkedin: "https://www.linkedin.com/in/luis-enr-diaz-garcia/",
   socials: [
@@ -60,106 +77,96 @@ export const site = {
   ],
 };
 
+export const stats: Stat[] = [
+  { value: 7, label: "Restaurantes" },
+  { value: 2, label: "Cadenas" },
+  { value: 200, suffix: "+", label: "Empleados a la vez" },
+  { value: 800, suffix: "+", label: "Personas en el menú digital" },
+  { value: 75, prefix: "−", suffix: " %", label: "Carga de cálculo en WeAdmin" },
+];
+
+export const education: Education = {
+  school: "ISDI Coders",
+  title: "Full Stack Development",
+  detail: "React, Redux, TypeScript, Jest, Node.js, Express y MongoDB.",
+};
+
+export const tools = ["Git", "GitHub", "Figma", "Chrome DevTools"];
+
+export const languages = "Español nativo. Inglés técnico.";
+
 export const navLinks: NavLink[] = [
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Stack", href: "#stack" },
   { label: "Experiencia", href: "#experiencia" },
+  { label: "Proyectos", href: "#proyectos" },
 ];
 
 export const projects: Project[] = [
   {
-    id: "wecopilot",
-    title: "WeCopilot",
+    id: "wewelcom-io",
+    title: "wewelcom.io",
     year: "WeWelcom",
     description:
-      "Plataforma operativa para restaurantes: módulos de sala, cocina, barra y TPV en un único ecosistema frontend.",
-    stack: ["Vue 3", "TypeScript", "Pinia", "WebSockets"],
-    tone: "forest",
-  },
-  {
-    id: "weadmin",
-    title: "WeAdmin",
-    year: "WeWelcom",
-    description:
-      "Dashboard de administración y gestión por restaurante: datos, configuración y operación del día a día.",
-    stack: ["Vue 3", "TypeScript", "ApexCharts", "REST APIs"],
-    tone: "ink",
-  },
-  {
-    id: "wepass",
-    title: "WePass",
-    year: "WeWelcom",
-    description:
-      "Aplicación orientada a clientes finales dentro del ecosistema WeWelcom.",
-    stack: ["Vue 3", "TypeScript", "Vite"],
-    tone: "stone",
-  },
-  {
-    id: "reservas",
-    title: "App de reservas",
-    year: "WeWelcom",
-    description:
-      "Aplicación de reservas para usuarios finales, enfocada en usabilidad y flujos claros.",
-    stack: ["Vue 3", "TypeScript", "Vue Router"],
+      "Alta de nuevos clientes y presentación del hardware, conectadas a la configuración del producto.",
+    stack: ["Vue 3", "Vuex", "Vue Router", "Bootstrap", "ECharts"],
+    demoHref: "https://wewelcom.io",
+    demoLabel: "Visitar sitio",
+    image: "/projects/wewelcom-io.png",
+    imageAlt: "Página de inicio de wewelcom.io",
     tone: "mist",
   },
   {
-    id: "landing-wewelcom",
-    title: "Landing WeWelcom",
-    year: "WeWelcom",
+    id: "madrid-al-paso",
+    title: "Madrid al Paso",
+    year: "Proyecto personal",
     description:
-      "Landing corporativa de WeWelcom: contenido, rendimiento y presentación del producto.",
-    stack: ["Astro", "TailwindCSS", "TypeScript"],
+      "Próximas llegadas de los autobuses de EMT Madrid a cualquier parada, en tiempo real, con mapa, paradas favoritas y avisos. Un proxy propio hace el login contra la API de EMT para que las credenciales nunca lleguen al navegador.",
+    stack: ["React", "TypeScript", "Vite", "Leaflet", "Capacitor"],
+    demoHref: "https://madridalpaso.luchodiaz.dev",
+    demoLabel: "Abrir la app",
+    visual: "route",
     tone: "forest",
-  },
-  {
-    id: "mandarin-oriental",
-    title: "Mandarin Oriental",
-    year: "WeWelcom",
-    description:
-      "Aplicación para la gestión de un evento navideño del Mandarin Oriental.",
-    stack: ["Vue 3", "TypeScript", "Vite"],
-    tone: "ink",
   },
 ];
 
 export const techGroups: TechGroup[] = [
   {
     label: "Core",
-    items: ["Vue 3", "TypeScript", "JavaScript", "Pinia", "Vue Router", "Vite"],
+    items: ["Vue 3", "TypeScript", "JavaScript", "Pinia", "Vuex", "Vue Router"],
   },
   {
-    label: "Plataforma",
-    items: ["Astro", "Tailwind CSS", "SCSS", "CSS", "ApexCharts", "Capacitor"],
+    label: "Interfaz",
+    items: ["Vite", "Vue CLI", "Tailwind CSS", "Sass", "Bootstrap", "Capacitor"],
   },
   {
-    label: "Datos y comunicación",
-    items: ["REST APIs", "WebSockets", "Server-Sent Events"],
+    label: "Datos y tiempo real",
+    items: ["REST", "WebSockets", "Server-Sent Events", "ApexCharts", "ECharts"],
   },
 ];
 
 export const experiences: Experience[] = [
   {
     company: "WeWelcom",
-    role: "Desarrollador Frontend especializado en producto",
+    role: "Responsable de producto y frontend",
     period: "2022 — Actualidad",
     summary:
-      "Responsable del desarrollo frontend, la arquitectura de la aplicación y la evolución continua del producto.",
+      "Responsable del producto y del frontend. Trato directo con el cliente y traducción de esas necesidades a diseño y funcionalidad en producción.",
     responsibilities: [
-      "Desarrollo aplicaciones SaaS y móviles desde cero.",
-      "Defino la arquitectura frontend y un sistema de componentes reutilizable.",
-      "Diseño interfaces centradas en usabilidad, rendimiento y accesibilidad.",
-      "Transformo necesidades de negocio en funcionalidades listas para producción.",
-      "Integro APIs REST, WebSockets y Server-Sent Events.",
-      "Itero continuamente el producto mediante ciclos cortos de desarrollo.",
+      "Hablo con el cliente, recojo cómo opera el local y convierto eso en alcance de producto.",
+      "Diseño la interfaz y desarrollo la funcionalidad del frontend, del flujo al detalle visual.",
+      "Mantengo cuatro aplicaciones en producción: WeCopilot, WeAdmin, WePass y wewelcom.io.",
+      "Doy servicio a 7 restaurantes y 2 cadenas, con más de 200 empleados simultáneos y más de 800 usuarios en el menú digital.",
+      "En WeAdmin optimicé el cálculo de datos: de más de 4.000 iteraciones a menos de 1.000, más de un 75 % menos de carga.",
+      "Adapto la arquitectura frontend a cada producto: TypeScript, Vite y Tailwind en el admin; Vue 3, Pinia, Sass y Capacitor en la app del restaurante.",
+      "Integro APIs REST, WebSockets y Server-Sent Events para la operativa y para KPIs en tiempo real.",
+      "Itero con el cliente en ciclos cortos y dejo los cambios en producción.",
     ],
     products: [
-      "WeCopilot — Plataforma operativa para restaurantes (sala, cocina, barra y TPV).",
-      "WeAdmin — Dashboard de administración y gestión por restaurante.",
-      "WePass — Aplicación para clientes.",
-      "App de reservas para usuarios finales.",
-      "Landing corporativa de WeWelcom.",
-      "Mandarin Oriental — App para la gestión de un evento navideño.",
+      "WeCopilot — Carta, reservas, takeaway, kiosko, sala y eventos.",
+      "WeAdmin — Catálogo, personal, copilot, integraciones y KPIs en tiempo real.",
+      "WePass — Invitados de eventos, con acceso y sincronización en tiempo real.",
+      "wewelcom.io — Alta de clientes y hardware.",
     ],
   },
 ];
