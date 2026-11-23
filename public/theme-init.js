@@ -1,4 +1,5 @@
 (function () {
+  document.documentElement.classList.add('js')
   try {
     var key = 'portfolio-theme'
     var theme = localStorage.getItem(key)

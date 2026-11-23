@@ -58,7 +58,7 @@ defineProps<{
 .experience-item {
   display: grid;
   gap: var(--space-6);
-  padding-block: var(--space-10);
+  padding-block: var(--space-8) var(--space-10);
   border-top: 1px solid var(--color-border);
 }
 

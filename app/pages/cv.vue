@@ -156,15 +156,15 @@ function printCv() {
   max-width: 48rem;
   margin: 0 auto;
   padding: 2.25rem 2.5rem;
-  background: #fff;
-  color: #18181b;
-  border: 1px solid rgba(9, 9, 11, 0.08);
+  background: var(--cv-paper);
+  color: var(--cv-ink);
+  border: 1px solid var(--cv-rule);
   border-radius: 0.75rem;
 }
 
 .cv__header {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e4e4e7;
+  border-bottom: 1px solid var(--cv-rule-strong);
 }
 
 .cv__kicker {
@@ -173,7 +173,7 @@ function printCv() {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #3f3f46;
+  color: var(--cv-muted);
 }
 
 .cv__name {
@@ -202,11 +202,12 @@ function printCv() {
 
 .cv__section h2 {
   margin: 0 0 0.45rem;
+  text-wrap: balance;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #3f3f46;
+  color: var(--cv-muted);
 }
 
 .cv__role {
@@ -231,7 +232,7 @@ function printCv() {
 .cv__period {
   margin: 0.1rem 0 0;
   font-size: 0.9rem;
-  color: #3f3f46;
+  color: var(--cv-muted);
 }
 
 .cv ul {
@@ -246,7 +247,7 @@ function printCv() {
 }
 
 .cv__note {
-  color: #3f3f46;
+  color: var(--cv-muted);
 }
 
 @media (max-width: 640px) {
@@ -263,7 +264,7 @@ function printCv() {
 @media print {
   .cv-page {
     padding: 0;
-    background: #fff;
+    background: var(--cv-paper);
   }
 
   .cv-toolbar {
@@ -284,7 +285,7 @@ function printCv() {
   html,
   body,
   .app-shell {
-    background: #fff !important;
+    background: var(--cv-paper) !important;
   }
 }
 </style>

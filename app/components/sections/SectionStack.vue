@@ -30,8 +30,8 @@ const items = techGroups.flatMap((group) => group.items)
   overflow: hidden;
   padding-block: 1.6rem;
   border-block: 1px solid var(--color-border);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, var(--color-mask) 12%, var(--color-mask) 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--color-mask) 12%, var(--color-mask) 88%, transparent);
 }
 
 .marquee__track {

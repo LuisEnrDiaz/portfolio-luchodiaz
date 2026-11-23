@@ -264,12 +264,12 @@ onBeforeUnmount(() => {
   transform-origin: center;
   transition:
     transform 400ms var(--ease-out),
-    opacity 200ms var(--ease-out),
-    top 400ms var(--ease-out);
+    opacity 200ms var(--ease-out);
 }
 
 .header__burger-line:nth-child(1) {
-  top: 0;
+  top: 50%;
+  transform: translateY(calc(-50% - 0.3rem));
 }
 
 .header__burger-line:nth-child(2) {
@@ -278,7 +278,8 @@ onBeforeUnmount(() => {
 }
 
 .header__burger-line:nth-child(3) {
-  top: calc(100% - 1.5px);
+  top: 50%;
+  transform: translateY(calc(-50% + 0.3rem));
 }
 
 .header__burger.is-open .header__burger-line:nth-child(1) {
@@ -300,6 +301,7 @@ onBeforeUnmount(() => {
   position: fixed;
   inset: 0;
   z-index: 50;
+  overflow: hidden;
   pointer-events: none;
 }
 

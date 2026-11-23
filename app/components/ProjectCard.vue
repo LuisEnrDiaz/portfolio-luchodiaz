@@ -198,12 +198,12 @@ defineProps<{
 
 @media (min-width: 900px) {
   .project-card__surface {
-    grid-template-columns: 1.35fr 1fr;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
     gap: clamp(var(--space-8), 4vw, var(--space-16));
   }
 
   .project-card__surface--reverse {
-    grid-template-columns: 1fr 1.35fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
   }
 
   .project-card__surface--reverse .project-card__visual {

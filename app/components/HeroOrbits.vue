@@ -87,7 +87,7 @@ const steps = [
   left: 50%;
   width: 10px;
   height: 10px;
-  margin-left: -5px;
+  translate: -50% 0;
   border-radius: 50%;
 }
 
@@ -107,7 +107,7 @@ const steps = [
   border-radius: 50%;
   background: radial-gradient(
     circle at 35% 30%,
-    #ffffff,
+    var(--color-core-highlight),
     var(--color-accent) 48%,
     var(--color-accent-soft) 100%
   );

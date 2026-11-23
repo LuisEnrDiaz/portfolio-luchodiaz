@@ -12,8 +12,6 @@ const lastWord = words.length - 1
 <template>
   <section id="inicio" ref="root" class="hero u-grid-bg">
     <div class="hero__spot" aria-hidden="true" />
-    <div class="hero__glow hero__glow--a" aria-hidden="true" />
-    <div class="hero__glow hero__glow--b" aria-hidden="true" />
 
     <UiContainer class="hero__inner">
       <div class="hero__layout">
@@ -84,7 +82,8 @@ const lastWord = words.length - 1
   min-height: calc(100svh - 3.5rem);
   display: flex;
   align-items: center;
-  padding-block: clamp(4rem, 12vh, 8rem);
+  padding-top: clamp(4rem, 12vh, 8rem);
+  padding-bottom: 8rem;
   overflow: hidden;
 }
 
@@ -100,25 +99,25 @@ const lastWord = words.length - 1
   );
 }
 
-.hero__glow {
+.hero__spot::before,
+.hero__spot::after {
+  content: ;
   position: absolute;
   border-radius: 50%;
-  background: var(--color-glow);
-  filter: blur(110px);
-  opacity: 0.7;
+  background-image: radial-gradient(closest-side, var(--color-glow), transparent);
   pointer-events: none;
-  z-index: 0;
   animation: hero-drift 20s ease-in-out infinite;
 }
 
-.hero__glow--a {
+.hero__spot::before {
   top: -10rem;
   right: -8rem;
   width: 32rem;
   height: 32rem;
+  opacity: 0.7;
 }
 
-.hero__glow--b {
+.hero__spot::after {
   bottom: -8rem;
   left: -10rem;
   width: 26rem;
@@ -165,6 +164,7 @@ const lastWord = words.length - 1
 
 .hero__title {
   margin: 0;
+  text-wrap: balance;
   font-size: clamp(3.25rem, 8.4vw, 7.25rem);
   font-weight: 600;
   line-height: 0.98;
@@ -224,7 +224,7 @@ const lastWord = words.length - 1
 .hero__link--primary {
   border-color: transparent;
   background: var(--color-accent);
-  color: var(--color-on-accent);
+  color: var(--color-accent-ink);
 }
 
 .hero__link--primary:hover {
@@ -263,7 +263,8 @@ const lastWord = words.length - 1
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__glow,
+  .hero__spot::before,
+  .hero__spot::after,
   .hero__live {
     animation: none;
   }

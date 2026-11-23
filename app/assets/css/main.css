@@ -12,7 +12,7 @@
   --color-bg-muted: #e4e4e7;
   --color-text: #09090b;
   --color-text-secondary: #52525b;
-  --color-text-tertiary: #a1a1aa;
+  --color-text-tertiary: #71717a;
   --color-border: rgba(9, 9, 11, 0.08);
   --color-border-strong: rgba(9, 9, 11, 0.14);
   --color-accent: #0070f3;
@@ -25,6 +25,16 @@
   --color-scrim: rgba(9, 9, 11, 0.4);
   --color-grain: multiply;
   --color-glow: rgba(0, 112, 243, 0.2);
+  --color-accent-ink: #ffffff;
+  --color-success: #22c55e;
+  --color-mask: #111111;
+  --color-core-highlight: #ffffff;
+  --color-emt: #0178bc;
+  --cv-paper: #ffffff;
+  --cv-ink: #18181b;
+  --cv-rule: rgba(9, 9, 11, 0.08);
+  --cv-rule-strong: #e4e4e7;
+  --cv-muted: #3f3f46;
   --color-grid: rgba(9, 9, 11, 0.05);
 
   --font-sans: 'Geist', 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
@@ -101,7 +111,7 @@
   --color-bg-muted: #1a1a1a;
   --color-text: #ededed;
   --color-text-secondary: #a1a1a1;
-  --color-text-tertiary: #666666;
+  --color-text-tertiary: #8a8a8a;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.14);
   --color-accent: #0070f3;
@@ -328,7 +338,7 @@ p {
 .u-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 500;
@@ -452,7 +462,7 @@ p {
   width: 0.35rem;
   height: 0.35rem;
   border-radius: 1px;
-  background: #22c55e;
+  background: var(--color-success);
 }
 
 /* ==========================================================================
@@ -495,7 +505,7 @@ p {
    Reveal + grid atmosphere
    ========================================================================== */
 
-.u-reveal {
+.js .u-reveal {
   opacity: 0;
   filter: blur(6px);
   transform: translateY(1rem);
@@ -527,7 +537,7 @@ p {
     linear-gradient(var(--color-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, var(--color-mask) 20%, transparent 75%);
 }
 
 .u-grid-bg > * {
@@ -567,4 +577,28 @@ p {
   ::view-transition-new(root) {
     animation: none !important;
   }
+}
+
+/* ==========================================================================
+   Polish: balanced heads, themed scrollbar, pressed state
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+html {
+  scrollbar-color: var(--color-border-strong) var(--color-bg);
+}
+
+:where(a, button):active {
+  opacity: 0.8;
 }
