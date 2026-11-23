@@ -23,8 +23,8 @@ const { isDark, toggleTheme } = useTheme()
 
 <style scoped>
 .theme-toggle {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;

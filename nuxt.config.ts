@@ -10,21 +10,20 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   fonts: {
     families: [
-      { name: 'Geist', provider: 'google' },
-      { name: 'Geist Mono', provider: 'google' },
+      { name: 'Bricolage Grotesque', provider: 'google', weights: [400, 500, 600, 700, 800] },
     ],
   },
   app: {
     head: {
       htmlAttrs: { lang: 'es' },
-      title: 'Lucho Díaz — Responsable de producto y frontend',
+      title: 'Lucho Díaz: responsable de producto y frontend',
       meta: [
         {
           name: 'description',
           content:
             'Responsable de producto y frontend en WeWelcom. Del trato con el cliente al diseño y la funcionalidad de aplicaciones Vue 3 en producción.',
         },
-        { name: 'theme-color', content: '#FAFAFA' },
+        { name: 'theme-color', content: '#ECEEF1' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },

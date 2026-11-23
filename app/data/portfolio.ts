@@ -193,7 +193,7 @@ export const experiences: Experience[] = [
   {
     company: "WeWelcom",
     role: "Responsable de producto y frontend",
-    period: "2022 — Actualidad",
+    period: "2022 a la actualidad",
     summary:
       "Responsable del producto y del frontend. Trato directo con el cliente y traducción de esas necesidades a diseño y funcionalidad en producción.",
     responsibilities: [
@@ -207,10 +207,10 @@ export const experiences: Experience[] = [
       "Itero con el cliente en ciclos cortos y dejo los cambios en producción.",
     ],
     products: [
-      "WeCopilot — Carta, reservas, takeaway, kiosko, sala y eventos.",
-      "WeAdmin — Catálogo, personal, copilot, integraciones y KPIs en tiempo real.",
-      "WePass — Invitados de eventos, con acceso y sincronización en tiempo real.",
-      "wewelcom.io — Alta de clientes y hardware.",
+      "WeCopilot: Carta, reservas, takeaway, kiosko, sala y eventos.",
+      "WeAdmin: Catálogo, personal, copilot, integraciones y KPIs en tiempo real.",
+      "WePass: Invitados de eventos, con acceso y sincronización en tiempo real.",
+      "wewelcom.io: Alta de clientes y hardware.",
     ],
   },
 ];

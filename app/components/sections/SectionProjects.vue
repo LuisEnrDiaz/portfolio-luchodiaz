@@ -2,7 +2,6 @@
 import { projects } from '~/data/portfolio'
 
 const root = ref<HTMLElement | null>(null)
-useGsapProjectCards(root)
 </script>
 
 <template>
@@ -12,7 +11,6 @@ useGsapProjectCards(root)
         <div class="projects u-stack u-stack--xl">
           <div data-gsap="project">
             <UiSectionHeading
-              eyebrow="Trabajo"
               title="Producto en producción y un proyecto propio"
             />
           </div>

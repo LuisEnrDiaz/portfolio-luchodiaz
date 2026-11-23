@@ -12,7 +12,7 @@ import {
 const job = experiences[0];
 
 useHead({
-  title: `${site.fullName} — CV`,
+  title: `${site.fullName}: CV`,
   meta: [
     {
       name: "description",
@@ -28,7 +28,7 @@ function printCv() {
 </script>
 
 <template>
-  <div class="cv-page">
+  <div id="contenido" class="cv-page">
     <div class="cv-toolbar">
       <NuxtLink to="/" class="cv-toolbar__link">Volver</NuxtLink>
       <button type="button" class="cv-toolbar__print" @click="printCv">
@@ -108,7 +108,7 @@ function printCv() {
       <section class="cv__section">
         <h2>Formación</h2>
         <p>
-          <strong>{{ education.school }}</strong> — {{ education.title }}.
+          <strong>{{ education.school }}</strong>, {{ education.title }}.
           {{ education.detail }}
           Formación de base; el trabajo diario es Vue y producto.
         </p>

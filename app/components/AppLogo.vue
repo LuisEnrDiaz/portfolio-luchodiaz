@@ -11,10 +11,10 @@ withDefaults(defineProps<{ size?: number }>(), { size: 28 })
     aria-hidden="true"
     focusable="false"
   >
-    <rect width="64" height="64" rx="15" fill="#0070f3" />
+    <rect width="64" height="64" rx="15" fill="#ffc933" />
     <g
       fill="none"
-      stroke="#fff"
+      stroke="#121317"
       stroke-width="5.5"
       stroke-linecap="round"
       stroke-linejoin="round"

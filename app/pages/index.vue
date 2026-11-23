@@ -8,9 +8,9 @@ import SectionsContact from '~/components/sections/SectionContact.vue'
 </script>
 
 <template>
-  <div>
+  <div class="home">
     <AppHeader />
-    <main>
+    <main id="contenido">
       <SectionsHero />
       <SectionsStack />
       <SectionsAbout />

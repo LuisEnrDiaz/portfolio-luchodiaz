@@ -2,7 +2,6 @@
 import { experiences } from '~/data/portfolio'
 
 const root = ref<HTMLElement | null>(null)
-useGsapReveal(root)
 </script>
 
 <template>
@@ -12,7 +11,6 @@ useGsapReveal(root)
         <div class="experience u-stack u-stack--lg">
           <div data-gsap="reveal">
             <UiSectionHeading
-              eyebrow="Experiencia"
               title="Trayectoria"
             />
           </div>
