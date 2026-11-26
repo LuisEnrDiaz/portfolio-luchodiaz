@@ -53,8 +53,8 @@ export const site = {
   role: "Frontend Developer",
   greeting: "Hola, soy Lucho Díaz",
   statements: [
-    "Frontend Developer con 4+ años construyendo desde cero una plataforma SaaS para restaurantes y hoteles.",
-    "Primer empleado y único frontend de WeWelcom: arquitectura, sistema de componentes y base de diseño en SCSS de todas sus aplicaciones, usadas por más de 600 usuarios.",
+    "Frontend Developer con 4+ años creando aplicaciones web y móviles en tiempo real con Vue 3 y TypeScript.",
+    "Primer empleado y único frontend de WeWelcom: sistema de componentes y base de diseño en SCSS de todas sus aplicaciones, usadas por más de 600 usuarios.",
     "Vue 3, TypeScript, Pinia, Astro y Capacitor, con IA (Cursor, Claude) en el día a día.",
   ],
   about: [
@@ -204,7 +204,7 @@ export const experiences: Experience[] = [
       "Primer empleado y único desarrollador frontend de un SaaS de gestión operativa en tiempo real para restaurantes y hoteles. Construí desde cero todas las aplicaciones de la empresa, trabajando con el equipo de backend.",
     responsibilities: [
       "Cuatro aplicaciones web y móviles en producción con más de 600 usuarios activos y 7 establecimientos (5 restaurantes, 1 cadena, 1 hotel), entre ellos La Casa del Abuelo, Hermanos Vinagre y Roost Chicken.",
-      "Definí la arquitectura frontend, un sistema de componentes reutilizable y la base de diseño en SCSS compartida por las aplicaciones, con foco en usabilidad, rendimiento y accesibilidad.",
+      "Creé un sistema de componentes reutilizable y la base de diseño en SCSS compartida por las aplicaciones, con foco en usabilidad, rendimiento y accesibilidad.",
       "En WeAdmin rediseñé la carga de datos junto al equipo de backend: de 90 s a 1 s. Migré la primera versión (basada en plantilla) a Vue 3 + Pinia + Tailwind.",
       "Integré IA (Cursor, Claude) en el flujo de desarrollo: tareas de 2-3 semanas pasaron a 1 semana.",
       "Responsable de producto: hablo con el cliente, recojo cómo opera el local y lo convierto en alcance de producto junto al equipo.",
@@ -222,11 +222,20 @@ export const experiences: Experience[] = [
 
 /** Texto de la portada: la parte en negrita va aparte para poder resaltarla. */
 export const intro = {
-  before: "Construyo el software con el que trabajan restaurantes y hoteles. Llevo ",
-  strong: "4 años como primer empleado y único frontend de WeWelcom",
+  before: "Frontend Developer con 4+ años creando ",
+  strong: "aplicaciones web y móviles en tiempo real",
   after:
-    ", con Vue 3 y TypeScript. Antes pasé 5 años en cocina profesional, así que conozco el negocio desde dentro.",
+    " con Vue 3 y TypeScript. Me encargo de todo el frontend: sistema de componentes, rendimiento y despliegue en producción.",
 };
+
+/** Lo que hago, sin atarlo a un sector. Va junto a la presentación de la portada. */
+export const highlights: string[] = [
+  "Sistemas de componentes reutilizables",
+  "Tiempo real con WebSockets y Server-Sent Events",
+  "Apps web y móviles con Capacitor",
+  "Rendimiento: Lighthouse 100/100, carga de 90 s a 1 s",
+  "IA en el desarrollo: de 2-3 semanas a 1",
+];
 
 export interface TicketLine {
   qty: string;

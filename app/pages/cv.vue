@@ -17,7 +17,7 @@ useHead({
     {
       name: "description",
       content:
-        "Frontend Developer en WeWelcom. Vue 3, TypeScript y producto SaaS para hostelería: arquitectura, diseño y funcionalidad en producción.",
+        "Frontend Developer en WeWelcom. Aplicaciones web y móviles en tiempo real con Vue 3 y TypeScript, del diseño a producción.",
     },
   ],
 });
@@ -57,12 +57,11 @@ function printCv() {
       <section class="cv__section">
         <h2>Perfil</h2>
         <p>
-          Frontend Developer en WeWelcom desde agosto de 2022: primer empleado
-          y único desarrollador frontend de un SaaS para restaurantes y hoteles.
-          Cuatro aplicaciones en producción para 7 establecimientos y más de 600
-          usuarios activos. Integro IA (Cursor, Claude) en el desarrollo: tareas
-          de 2-3 semanas pasaron a 1. Antes trabajé 5 años en cocina
-          profesional, llegando a encargado.
+          Frontend Developer con 4+ años creando aplicaciones web y móviles en
+          tiempo real con Vue 3 y TypeScript. Primer empleado y único
+          desarrollador frontend de WeWelcom desde agosto de 2022: cuatro
+          aplicaciones en producción con más de 600 usuarios activos. Integro IA
+          (Cursor, Claude) en el desarrollo: tareas de 2-3 semanas pasaron a 1.
         </p>
       </section>
 
