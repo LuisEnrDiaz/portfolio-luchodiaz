@@ -53,8 +53,9 @@ export const site = {
   role: "Frontend Developer",
   greeting: "Hola, soy Lucho Díaz",
   statements: [
-    "Hablo con el cliente, entiendo cómo trabaja el local y lo convierto en producto.",
-    "Me encargo del diseño y de la funcionalidad del frontend, hasta dejarlo en producción.",
+    "Frontend Developer con 4+ años construyendo desde cero una plataforma SaaS para restaurantes y hoteles.",
+    "Primer empleado y único frontend de WeWelcom: arquitectura, sistema de componentes y base de diseño en SCSS de todas sus aplicaciones, usadas por más de 600 usuarios.",
+    "Vue 3, TypeScript, Pinia, Astro y Capacitor, con IA (Cursor, Claude) en el día a día.",
   ],
   about: [
     "Desde 2022 soy Frontend Developer en WeWelcom, un SaaS para restaurantes y hoteles. Fui el primer empleado y soy el único desarrollador frontend: construí desde cero todas sus aplicaciones.",
