@@ -50,15 +50,16 @@ export interface Education {
 export const site = {
   name: "Lucho Díaz",
   fullName: "Luis Enrique Díaz García",
-  role: "Responsable de producto y frontend",
+  role: "Frontend Developer",
   greeting: "Hola, soy Lucho Díaz",
   statements: [
     "Hablo con el cliente, entiendo cómo trabaja el local y lo convierto en producto.",
     "Me encargo del diseño y de la funcionalidad del frontend, hasta dejarlo en producción.",
   ],
   about: [
-    "Desde 2022 soy responsable de producto y del frontend en WeWelcom, un SaaS para la hostelería.",
-    "El trabajo empieza con el cliente: recojo lo que necesita el local y lo plasmo en la aplicación, tanto en el diseño como en el comportamiento.",
+    "Desde 2022 soy Frontend Developer en WeWelcom, un SaaS para restaurantes y hoteles. Fui el primer empleado y soy el único desarrollador frontend: construí desde cero todas sus aplicaciones.",
+    "El trabajo empieza con el cliente: recojo lo que necesita el local y lo plasmo en la aplicación, tanto en el diseño como en el comportamiento. Uso IA (Cursor, Claude) en el día a día: tareas de 2-3 semanas pasaron a 1.",
+    "Antes de programar trabajé 5 años en cocina profesional, llegando a encargado, así que conozco el negocio hostelero desde dentro.",
     "El mejor software, para mí, es el que resuelve el problema del local sin añadir pasos de más.",
   ],
   email: "luis.enr.diaz.garcia@gmail.com",
@@ -80,20 +81,20 @@ export const site = {
 };
 
 export const stats: Stat[] = [
-  { value: 7, label: "Restaurantes" },
-  { value: 2, label: "Cadenas" },
-  { value: 200, suffix: "+", label: "Empleados a la vez" },
-  { value: 800, suffix: "+", label: "Personas en el menú digital" },
-  { value: 75, prefix: "−", suffix: " %", label: "Carga de cálculo en WeAdmin" },
+  { value: 7, label: "Establecimientos" },
+  { value: 600, suffix: "+", label: "Usuarios activos" },
+  { value: 200, suffix: "+", label: "Empleados en WeCopilot" },
+  { value: 4, label: "Apps en producción" },
+  { value: 1, prefix: "90 s → ", suffix: " s", label: "Carga de datos en WeAdmin" },
 ];
 
 export const education: Education = {
   school: "ISDI Coders",
   title: "Full Stack Development",
-  detail: "React, Redux, TypeScript, Jest, Node.js, Express y MongoDB.",
+  detail: "Abril – julio 2022. Proyecto final Tattoo Center: React, Redux, TypeScript, Jest, Node.js, Express y MongoDB.",
 };
 
-export const tools = ["Git", "GitHub", "Figma", "Chrome DevTools"];
+export const tools = ["Git", "GitHub", "GitHub Actions", "Cursor", "Claude", "Figma", "Chrome DevTools"];
 
 export const languages = "Español nativo. Inglés técnico.";
 
@@ -111,8 +112,8 @@ export const products: Project[] = [
     title: "WeCopilot",
     year: "WeWelcom",
     description:
-      "Aplicación del restaurante: carta, reservas, takeaway, kiosko, sala y eventos. El equipo opera en tiempo real y el cliente completa sus flujos en el mismo producto.",
-    stack: ["Vue 3", "Pinia", "Capacitor", "Sass", "WebSockets"],
+      "Aplicación web y móvil del restaurante: carta, reservas, takeaway, kiosko, sala y eventos. Más de 200 empleados la usan a diario y el cliente completa sus flujos en el mismo producto.",
+    stack: ["Vue 3", "Pinia", "TypeScript", "Capacitor", "SCSS", "WebSockets"],
     tone: "forest",
   },
   {
@@ -120,7 +121,7 @@ export const products: Project[] = [
     title: "WeAdmin",
     year: "WeWelcom",
     description:
-      "Panel del local: catálogo, personal, copilot, eventos, integraciones de TPV y reservas, y KPIs en tiempo real. Optimicé el cálculo de datos: de más de 4.000 iteraciones a menos de 1.000, más de un 75 % menos de carga.",
+      "Panel del local para más de 100 encargados: catálogo, personal, copilot, eventos, integraciones de TPV y reservas, y KPIs en tiempo real. Rediseñé la carga de datos junto al equipo de backend: de 90 s a 1 s. Migré la primera versión (basada en plantilla) a Vue 3 + Pinia + Tailwind.",
     stack: ["Vue 3", "TypeScript", "Vite", "Tailwind CSS", "ApexCharts"],
     tone: "ink",
   },
@@ -129,8 +130,8 @@ export const products: Project[] = [
     title: "WePass",
     year: "WeWelcom",
     description:
-      "Experiencia de invitado en eventos. Invitación, acceso y sincronización en tiempo real cuando el anfitrión valida el QR.",
-    stack: ["Vue 3", "Pinia", "Sass", "WebSockets", "SSE"],
+      "Experiencia de invitado en eventos para más de 300 usuarios. Invitación con QR personal, acceso y sincronización en tiempo real cuando el anfitrión valida el QR.",
+    stack: ["Vue 3", "Pinia", "SCSS", "WebSockets", "SSE"],
     tone: "stone",
   },
   {
@@ -138,8 +139,8 @@ export const products: Project[] = [
     title: "wewelcom.io",
     year: "WeWelcom",
     description:
-      "Alta de nuevos clientes y presentación del hardware, conectadas a la configuración del producto.",
-    stack: ["Vue 3", "Vuex", "Vue Router", "Bootstrap", "ECharts"],
+      "Web de presentación, alta de nuevos clientes y hardware. Hecha en Astro con desarrollo asistido por IA: Lighthouse 100/100.",
+    stack: ["Astro", "Cursor", "Claude"],
     tone: "mist",
   },
 ];
@@ -150,8 +151,8 @@ export const projects: Project[] = [
     title: "wewelcom.io",
     year: "WeWelcom",
     description:
-      "Alta de nuevos clientes y presentación del hardware, conectadas a la configuración del producto.",
-    stack: ["Vue 3", "Vuex", "Vue Router", "Bootstrap", "ECharts"],
+      "Web de presentación, alta de nuevos clientes y hardware. Hecha en Astro con desarrollo asistido por IA: Lighthouse 100/100.",
+    stack: ["Astro", "Cursor", "Claude"],
     demoHref: "https://wewelcom.io",
     demoLabel: "Visitar sitio",
     image: "/projects/wewelcom-io.png",
@@ -177,40 +178,43 @@ export const projects: Project[] = [
 export const techGroups: TechGroup[] = [
   {
     label: "Core",
-    items: ["Vue 3", "TypeScript", "JavaScript", "Pinia", "Vuex", "Vue Router"],
+    items: ["Vue 3", "TypeScript", "JavaScript", "Pinia", "Vue Router", "Vuex"],
   },
   {
     label: "Interfaz",
-    items: ["Vite", "Vue CLI", "Tailwind CSS", "Sass", "Bootstrap", "Capacitor"],
+    items: ["Vite", "SCSS", "Tailwind CSS", "Astro", "Capacitor", "Sistemas de componentes"],
   },
   {
     label: "Datos y tiempo real",
     items: ["REST", "WebSockets", "Server-Sent Events", "ApexCharts", "ECharts"],
+  },
+  {
+    label: "Calidad e IA",
+    items: ["Testing E2E", "GitHub Actions", "Lighthouse", "Cursor", "Claude"],
   },
 ];
 
 export const experiences: Experience[] = [
   {
     company: "WeWelcom",
-    role: "Responsable de producto y frontend",
-    period: "2022 a la actualidad",
+    role: "Frontend Developer",
+    period: "Agosto 2022 a la actualidad",
     summary:
-      "Responsable del producto y del frontend. Trato directo con el cliente y traducción de esas necesidades a diseño y funcionalidad en producción.",
+      "Primer empleado y único desarrollador frontend de un SaaS de gestión operativa en tiempo real para restaurantes y hoteles. Construí desde cero todas las aplicaciones de la empresa, trabajando con el equipo de backend.",
     responsibilities: [
-      "Hablo con el cliente, recojo cómo opera el local y convierto eso en alcance de producto.",
-      "Diseño la interfaz y desarrollo la funcionalidad del frontend, del flujo al detalle visual.",
-      "Mantengo cuatro aplicaciones en producción: WeCopilot, WeAdmin, WePass y wewelcom.io.",
-      "Doy servicio a 7 restaurantes y 2 cadenas, con más de 200 empleados simultáneos y más de 800 usuarios en el menú digital.",
-      "En WeAdmin optimicé el cálculo de datos: de más de 4.000 iteraciones a menos de 1.000, más de un 75 % menos de carga.",
-      "Adapto la arquitectura frontend a cada producto: TypeScript, Vite y Tailwind en el admin; Vue 3, Pinia, Sass y Capacitor en la app del restaurante.",
+      "Cuatro aplicaciones web y móviles en producción con más de 600 usuarios activos y 7 establecimientos (5 restaurantes, 1 cadena, 1 hotel), entre ellos La Casa del Abuelo, Hermanos Vinagre y Roost Chicken.",
+      "Definí la arquitectura frontend, un sistema de componentes reutilizable y la base de diseño en SCSS compartida por las aplicaciones, con foco en usabilidad, rendimiento y accesibilidad.",
+      "En WeAdmin rediseñé la carga de datos junto al equipo de backend: de 90 s a 1 s. Migré la primera versión (basada en plantilla) a Vue 3 + Pinia + Tailwind.",
+      "Integré IA (Cursor, Claude) en el flujo de desarrollo: tareas de 2-3 semanas pasaron a 1 semana.",
+      "Responsable de producto: hablo con el cliente, recojo cómo opera el local y lo convierto en alcance de producto junto al equipo.",
       "Integro APIs REST, WebSockets y Server-Sent Events para la operativa y para KPIs en tiempo real.",
-      "Itero con el cliente en ciclos cortos y dejo los cambios en producción.",
+      "Testing E2E y pipelines de CI/CD con GitHub Actions; despliegues semanales en producción.",
     ],
     products: [
       "WeCopilot: Carta, reservas, takeaway, kiosko, sala y eventos.",
       "WeAdmin: Catálogo, personal, copilot, integraciones y KPIs en tiempo real.",
       "WePass: Invitados de eventos, con acceso y sincronización en tiempo real.",
-      "wewelcom.io: Alta de clientes y hardware.",
+      "wewelcom.io: Web de presentación y alta de clientes en Astro, Lighthouse 100/100.",
     ],
   },
 ];
