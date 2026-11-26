@@ -100,10 +100,10 @@ export const tools = ["Git", "GitHub", "GitHub Actions", "Cursor", "Claude", "Fi
 export const languages = "Español nativo. Inglés técnico.";
 
 export const navLinks: NavLink[] = [
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Stack", href: "#stack" },
-  { label: "Experiencia", href: "#experiencia" },
+  { label: "Trayectoria", href: "#trayectoria" },
   { label: "Proyectos", href: "#proyectos" },
+  { label: "Stack", href: "#stack" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 /** Productos de WeWelcom: se usan en el CV (no en la sección Proyectos de la home). */
@@ -163,7 +163,7 @@ export const projects: Project[] = [
   {
     id: "madrid-al-paso",
     title: "Madrid al Paso",
-    year: "Proyecto personal",
+    year: "Proyecto personal, noviembre 2026",
     description:
       "Próximas llegadas de los autobuses de EMT Madrid a cualquier parada, en tiempo real, con mapa, paradas favoritas y avisos. Un proxy propio hace el login contra la API de EMT para que las credenciales nunca lleguen al navegador.",
     stack: ["React", "TypeScript", "Vite", "Leaflet", "Capacitor"],
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     demoLabel: "Abrir la app",
     visual: "route",
     downloadHref: "/downloads/madrid-al-paso.apk",
-    downloadLabel: "Descargar APK · Android",
+    downloadLabel: "Descargar APK para Android",
     tone: "forest",
   },
 ];
@@ -219,3 +219,63 @@ export const experiences: Experience[] = [
     ],
   },
 ];
+
+/** Texto de la portada: la parte en negrita va aparte para poder resaltarla. */
+export const intro = {
+  before: "Construyo el software con el que trabajan restaurantes y hoteles. Llevo ",
+  strong: "4 años como primer empleado y único frontend de WeWelcom",
+  after:
+    ", con Vue 3 y TypeScript. Antes pasé 5 años en cocina profesional, así que conozco el negocio desde dentro.",
+};
+
+export interface TicketLine {
+  qty: string;
+  label: string;
+}
+
+/** La comanda de la portada: WeWelcom en cifras. */
+export const ticket = {
+  brand: "WeWelcom",
+  subtitle: "SaaS para restaurantes y hoteles",
+  who: "Frontend: Lucho",
+  since: "Ago 2022 – hoy",
+  lines: [
+    { qty: "4", label: "Apps en producción" },
+    { qty: "7", label: "Establecimientos" },
+    { qty: "600+", label: "Usuarios activos" },
+    { qty: "200+", label: "Empleados en WeCopilot" },
+  ] as TicketLine[],
+  note: { label: "Carga de datos en WeAdmin", from: "90 s", to: "1 s" },
+  stack: "Vue 3 + TypeScript",
+  footer: "¡Marchando!",
+};
+
+export interface TimelineEntry {
+  period: string;
+  place: string;
+  role: string;
+  text?: string;
+  points?: string[];
+}
+
+/** Lo anterior a WeWelcom, del más reciente al más antiguo. */
+export const earlier: TimelineEntry[] = [
+  {
+    period: "Abr – jul 2022",
+    place: "ISDI Coders",
+    role: "Bootcamp Full Stack, Madrid",
+    text: "Proyecto final: Tattoo Center, una aplicación full stack con React, Redux, TypeScript y Jest en el frontend, y Node.js, Express y MongoDB en el backend.",
+  },
+  {
+    period: "2016 – 2022",
+    place: "Cocina profesional",
+    role: "De cocinero a encargado",
+    points: [
+      "80 Grados (2021 – 2022): cocinero encargado de carta caliente.",
+      "Grupo SAGARDI (2016 – 2020): cocinero encargado de servicio, con un equipo de 3 personas.",
+    ],
+  },
+];
+
+export const stackExtra =
+  "También: React y Redux (proyectos personales y formación), Node.js, Express y MongoDB. Español nativo, inglés técnico.";
