@@ -569,37 +569,70 @@ html {
 }
 
 /* ==========================================================================
-   Escena 3D: el contenido va sobre el canvas fijo
+   Página: secciones, botones y enlaces compartidos
    ========================================================================== */
 
 .home > main,
 .home > footer {
   position: relative;
-  z-index: 1;
 }
 
-/* El portátil ocupa un lado distinto en cada sección: el texto cede el espacio. */
-@media (min-width: 900px) {
-  .has-scene #sobre-mi .u-container > div {
-    margin-left: 40%;
-  }
-
-  .has-scene #experiencia .u-container > div,
-  .has-scene #contacto .u-container > div {
-    margin-right: 40%;
-  }
+.block {
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+  border-top: 1px solid var(--color-border);
 }
 
-/* Contacto ocupa la pantalla: el portátil aterriza ahí sin quedar tapado por la última tarjeta. */
-@media (min-width: 900px) {
-  .has-scene #contacto {
-    display: flex;
-    align-items: center;
-    min-height: 90svh;
-  }
+.block__title {
+  margin: 0 0 var(--space-12);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+}
 
-  /* El contenedor intermedio debe ocupar todo el ancho, o el flex lo encoge y lo pega a la izquierda. */
-  .has-scene #contacto > div {
-    width: 100%;
-  }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  transition:
+    background-color var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+.btn:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.btn--primary {
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+  color: var(--color-accent-ink);
+}
+
+.btn--primary:hover {
+  background: #ffd966;
+  border-color: #ffd966;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 0.25em;
+}
+
+.link:hover {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+}
+
+.btn:focus-visible,
+.link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }

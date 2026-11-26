@@ -1,56 +1,60 @@
 <script setup lang="ts">
-import { techGroups } from '~/data/portfolio'
+import { stackExtra, techGroups } from '~/data/portfolio'
 </script>
 
 <template>
-  <section id="stack" class="stack" aria-label="Stack">
+  <section id="stack" class="block">
     <UiContainer>
-      <dl class="stack__list">
+      <h2 class="block__title">Stack</h2>
+
+      <dl class="stack">
         <div v-for="group in techGroups" :key="group.label" class="stack__row">
           <dt class="stack__label">{{ group.label }}</dt>
           <dd class="stack__items">{{ group.items.join(', ') }}</dd>
         </div>
       </dl>
+
+      <p class="stack__extra">{{ stackExtra }}</p>
     </UiContainer>
   </section>
 </template>
 
 <style scoped>
 .stack {
-  padding-block: var(--space-12);
-  border-block: 1px solid var(--color-border);
-}
-
-.stack__list {
-  display: grid;
-  gap: var(--space-6);
   margin: 0;
 }
 
 .stack__row {
   display: grid;
   gap: var(--space-2);
-  max-width: 40rem;
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border);
 }
 
-.stack__label {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.stack__items {
-  margin: 0;
-  font-size: var(--text-lg);
-  line-height: var(--leading-snug);
-  color: var(--color-text-secondary);
+.stack__row:last-child {
+  border-bottom: 1px solid var(--color-border);
 }
 
 @media (min-width: 900px) {
   .stack__row {
-    grid-template-columns: 11rem 1fr;
-    gap: var(--space-6);
-    align-items: baseline;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--space-10);
   }
+}
+
+.stack__label {
+  font-weight: 600;
+}
+
+.stack__items {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.stack__extra {
+  margin: var(--space-8) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
 }
 </style>

@@ -53,8 +53,9 @@ export const site = {
   role: "Frontend Developer",
   greeting: "Hola, soy Lucho Díaz",
   statements: [
-    "Hablo con el cliente, entiendo cómo trabaja el local y lo convierto en producto.",
-    "Me encargo del diseño y de la funcionalidad del frontend, hasta dejarlo en producción.",
+    "Frontend Developer con 4+ años creando aplicaciones web y móviles en tiempo real con Vue 3 y TypeScript.",
+    "Primer empleado y único frontend de WeWelcom: sistema de componentes y base de diseño en SCSS de todas sus aplicaciones, usadas por más de 600 usuarios.",
+    "Vue 3, TypeScript, Pinia, Astro y Capacitor, con IA (Cursor, Claude) en el día a día.",
   ],
   about: [
     "Desde 2022 soy Frontend Developer en WeWelcom, un SaaS para restaurantes y hoteles. Fui el primer empleado y soy el único desarrollador frontend: construí desde cero todas sus aplicaciones.",
@@ -99,10 +100,10 @@ export const tools = ["Git", "GitHub", "GitHub Actions", "Cursor", "Claude", "Fi
 export const languages = "Español nativo. Inglés técnico.";
 
 export const navLinks: NavLink[] = [
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Stack", href: "#stack" },
-  { label: "Experiencia", href: "#experiencia" },
+  { label: "Trayectoria", href: "#trayectoria" },
   { label: "Proyectos", href: "#proyectos" },
+  { label: "Stack", href: "#stack" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 /** Productos de WeWelcom: se usan en el CV (no en la sección Proyectos de la home). */
@@ -162,7 +163,7 @@ export const projects: Project[] = [
   {
     id: "madrid-al-paso",
     title: "Madrid al Paso",
-    year: "Proyecto personal",
+    year: "Proyecto personal, noviembre 2026",
     description:
       "Próximas llegadas de los autobuses de EMT Madrid a cualquier parada, en tiempo real, con mapa, paradas favoritas y avisos. Un proxy propio hace el login contra la API de EMT para que las credenciales nunca lleguen al navegador.",
     stack: ["React", "TypeScript", "Vite", "Leaflet", "Capacitor"],
@@ -170,7 +171,7 @@ export const projects: Project[] = [
     demoLabel: "Abrir la app",
     visual: "route",
     downloadHref: "/downloads/madrid-al-paso.apk",
-    downloadLabel: "Descargar APK · Android",
+    downloadLabel: "Descargar APK para Android",
     tone: "forest",
   },
 ];
@@ -203,7 +204,7 @@ export const experiences: Experience[] = [
       "Primer empleado y único desarrollador frontend de un SaaS de gestión operativa en tiempo real para restaurantes y hoteles. Construí desde cero todas las aplicaciones de la empresa, trabajando con el equipo de backend.",
     responsibilities: [
       "Cuatro aplicaciones web y móviles en producción con más de 600 usuarios activos y 7 establecimientos (5 restaurantes, 1 cadena, 1 hotel), entre ellos La Casa del Abuelo, Hermanos Vinagre y Roost Chicken.",
-      "Definí la arquitectura frontend, un sistema de componentes reutilizable y la base de diseño en SCSS compartida por las aplicaciones, con foco en usabilidad, rendimiento y accesibilidad.",
+      "Creé un sistema de componentes reutilizable y la base de diseño en SCSS compartida por las aplicaciones, con foco en usabilidad, rendimiento y accesibilidad.",
       "En WeAdmin rediseñé la carga de datos junto al equipo de backend: de 90 s a 1 s. Migré la primera versión (basada en plantilla) a Vue 3 + Pinia + Tailwind.",
       "Integré IA (Cursor, Claude) en el flujo de desarrollo: tareas de 2-3 semanas pasaron a 1 semana.",
       "Responsable de producto: hablo con el cliente, recojo cómo opera el local y lo convierto en alcance de producto junto al equipo.",
@@ -218,3 +219,65 @@ export const experiences: Experience[] = [
     ],
   },
 ];
+
+/** Texto de la portada: la parte en negrita va aparte para poder resaltarla. */
+export const intro = {
+  before:
+    "Frontend Developer con 4+ años creando aplicaciones web y móviles con Vue 3 y TypeScript. Me gusta llevar un producto ",
+  strong: "de la idea a producción",
+  after:
+    ": he construido desde cero cuatro aplicaciones en tiempo real, su sistema de componentes y su base de diseño.",
+};
+
+
+export interface TicketLine {
+  qty: string;
+  label: string;
+}
+
+/** La comanda de la portada: WeWelcom en cifras. */
+export const ticket = {
+  brand: "WeWelcom",
+  subtitle: "SaaS para restaurantes y hoteles",
+  who: "Frontend: Lucho",
+  since: "Ago 2022 – hoy",
+  lines: [
+    { qty: "4", label: "Apps en producción" },
+    { qty: "7", label: "Establecimientos" },
+    { qty: "600+", label: "Usuarios activos" },
+    { qty: "200+", label: "Empleados en WeCopilot" },
+  ] as TicketLine[],
+  note: { label: "Carga de datos en WeAdmin", from: "90 s", to: "1 s" },
+  stack: "Vue 3 + TypeScript",
+  footer: "¡Marchando!",
+};
+
+export interface TimelineEntry {
+  period: string;
+  place: string;
+  role: string;
+  text?: string;
+  points?: string[];
+}
+
+/** Lo anterior a WeWelcom, del más reciente al más antiguo. */
+export const earlier: TimelineEntry[] = [
+  {
+    period: "Abr – jul 2022",
+    place: "ISDI Coders",
+    role: "Bootcamp Full Stack, Madrid",
+    text: "Proyecto final: Tattoo Center, una aplicación full stack con React, Redux, TypeScript y Jest en el frontend, y Node.js, Express y MongoDB en el backend.",
+  },
+  {
+    period: "2016 – 2022",
+    place: "Cocina profesional",
+    role: "De cocinero a encargado",
+    points: [
+      "80 Grados (2021 – 2022): cocinero encargado de carta caliente.",
+      "Grupo SAGARDI (2016 – 2020): cocinero encargado de servicio, con un equipo de 3 personas.",
+    ],
+  },
+];
+
+export const stackExtra =
+  "También: React y Redux (proyectos personales y formación), Node.js, Express y MongoDB. Español nativo, inglés técnico.";
