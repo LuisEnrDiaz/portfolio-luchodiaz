@@ -16,12 +16,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'es' },
-      title: 'Lucho Díaz: responsable de producto y frontend',
+      title: 'Lucho Díaz: Frontend Developer',
       meta: [
         {
           name: 'description',
           content:
-            'Responsable de producto y frontend en WeWelcom. Del trato con el cliente al diseño y la funcionalidad de aplicaciones Vue 3 en producción.',
+            'Frontend Developer en WeWelcom. Vue 3 y TypeScript: del trato con el cliente al diseño y la funcionalidad de aplicaciones en producción.',
         },
         { name: 'theme-color', content: '#ECEEF1' },
       ],

@@ -17,7 +17,7 @@ useHead({
     {
       name: "description",
       content:
-        "Responsable de producto y frontend en WeWelcom. Trato directo con el cliente, diseño y funcionalidad de aplicaciones Vue 3 en producción.",
+        "Frontend Developer en WeWelcom. Vue 3, TypeScript y producto SaaS para hostelería: arquitectura, diseño y funcionalidad en producción.",
     },
   ],
 });
@@ -41,7 +41,7 @@ function printCv() {
         <p class="cv__kicker">{{ site.role }}</p>
         <h1 class="cv__name">{{ site.fullName }}</h1>
         <p class="cv__tagline">
-          Vue 3 · Producto SaaS · Hostelería · Diseño y funcionalidad frontend
+          Vue 3 · TypeScript · Producto SaaS · Hostelería
         </p>
         <p class="cv__contact">
           {{ site.location }}
@@ -57,12 +57,12 @@ function printCv() {
       <section class="cv__section">
         <h2>Perfil</h2>
         <p>
-          Responsable de producto y del frontend en WeWelcom desde 2022. Trato
-          directo con el cliente: recojo cómo opera el local y lo plasmo en la
-          aplicación, en el diseño y en la funcionalidad. Cuatro productos en
-          producción para 7 restaurantes y 2 cadenas, con más de 200 empleados
-          simultáneos, más de 800 usuarios en el menú digital y KPIs en tiempo
-          real.
+          Frontend Developer en WeWelcom desde agosto de 2022: primer empleado
+          y único desarrollador frontend de un SaaS para restaurantes y hoteles.
+          Cuatro aplicaciones en producción para 7 establecimientos y más de 600
+          usuarios activos. Integro IA (Cursor, Claude) en el desarrollo: tareas
+          de 2-3 semanas pasaron a 1. Antes trabajé 5 años en cocina
+          profesional, llegando a encargado.
         </p>
       </section>
 
@@ -98,10 +98,11 @@ function printCv() {
           {{ group.items.join(" · ") }}
         </p>
         <p class="cv__note">
-          TypeScript, Vite y Tailwind son el stack de WeAdmin. WeCopilot, WePass
-          y wewelcom.io están en Vue 3 con Vue CLI; Pinia o Vuex según el
-          producto. El tiempo real (WebSockets y SSE) está en la operativa, en
-          WePass y en la monitorización del admin.
+          TypeScript, Vite y Tailwind son el stack de WeAdmin. WeCopilot y
+          WePass comparten la base de diseño en SCSS; WeCopilot sale también
+          como app móvil con Capacitor. wewelcom.io está hecha en Astro. El
+          tiempo real (WebSockets y SSE) está en la operativa, en WePass y en la
+          monitorización del admin.
         </p>
       </section>
 
