@@ -222,20 +222,13 @@ export const experiences: Experience[] = [
 
 /** Texto de la portada: la parte en negrita va aparte para poder resaltarla. */
 export const intro = {
-  before: "Frontend Developer con 4+ años creando ",
-  strong: "aplicaciones web y móviles en tiempo real",
+  before:
+    "Frontend Developer con 4+ años creando aplicaciones web y móviles con Vue 3 y TypeScript. Me gusta llevar un producto ",
+  strong: "de la idea a producción",
   after:
-    " con Vue 3 y TypeScript. Me encargo de todo el frontend: sistema de componentes, rendimiento y despliegue en producción.",
+    ": he construido desde cero cuatro aplicaciones en tiempo real, su sistema de componentes y su base de diseño.",
 };
 
-/** Lo que hago, sin atarlo a un sector. Va junto a la presentación de la portada. */
-export const highlights: string[] = [
-  "Sistemas de componentes reutilizables",
-  "Tiempo real con WebSockets y Server-Sent Events",
-  "Apps web y móviles con Capacitor",
-  "Rendimiento: Lighthouse 100/100, carga de 90 s a 1 s",
-  "IA en el desarrollo: de 2-3 semanas a 1",
-];
 
 export interface TicketLine {
   qty: string;

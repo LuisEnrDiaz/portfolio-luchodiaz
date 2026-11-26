@@ -57,11 +57,10 @@ function printCv() {
       <section class="cv__section">
         <h2>Perfil</h2>
         <p>
-          Frontend Developer con 4+ años creando aplicaciones web y móviles en
-          tiempo real con Vue 3 y TypeScript. Primer empleado y único
-          desarrollador frontend de WeWelcom desde agosto de 2022: cuatro
-          aplicaciones en producción con más de 600 usuarios activos. Integro IA
-          (Cursor, Claude) en el desarrollo: tareas de 2-3 semanas pasaron a 1.
+          Frontend Developer con 4+ años creando aplicaciones web y móviles con
+          Vue 3 y TypeScript. Me gusta llevar un producto de la idea a
+          producción: he construido desde cero cuatro aplicaciones en tiempo
+          real, su sistema de componentes y su base de diseño.
         </p>
       </section>
 

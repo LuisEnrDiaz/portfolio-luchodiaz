@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { highlights, intro, site } from '~/data/portfolio'
+import { intro, site } from '~/data/portfolio'
 </script>
 
 <template>
   <section id="inicio" class="hero">
     <UiContainer>
-      <div class="hero__grid">
-        <div>
+      <div class="hero__content">
           <p class="hero__role">{{ site.role }} en Madrid</p>
           <h1 class="hero__title">{{ site.name }}</h1>
           <p class="hero__intro">
@@ -22,11 +21,6 @@ import { highlights, intro, site } from '~/data/portfolio'
             <a :href="`mailto:${site.email}`" class="btn">Escribir un email</a>
             <NuxtLink to="/cv" class="btn">Abrir el CV</NuxtLink>
           </div>
-        </div>
-
-        <ul class="hero__list" aria-label="Lo que hago">
-          <li v-for="item in highlights" :key="item">{{ item }}</li>
-        </ul>
       </div>
     </UiContainer>
   </section>
@@ -38,17 +32,8 @@ import { highlights, intro, site } from '~/data/portfolio'
   padding-bottom: clamp(4rem, 10vh, 7rem);
 }
 
-.hero__grid {
-  display: grid;
-  gap: var(--space-16);
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .hero__grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: var(--space-12);
-  }
+.hero__content {
+  max-width: 46rem;
 }
 
 .hero__role {
@@ -68,7 +53,7 @@ import { highlights, intro, site } from '~/data/portfolio'
 
 .hero__intro {
   margin: var(--space-8) 0 0;
-  max-width: 34rem;
+  max-width: 40rem;
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
@@ -87,31 +72,4 @@ import { highlights, intro, site } from '~/data/portfolio'
   margin-top: var(--space-10);
 }
 
-.hero__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-border);
-}
-
-.hero__list li {
-  position: relative;
-  padding: var(--space-4) 0 var(--space-4) 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  font-size: var(--text-lg);
-  line-height: var(--leading-snug);
-  color: var(--color-text);
-}
-
-.hero__list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 2px;
-  background: var(--color-signal);
-  transform: translateY(-50%);
-}
 </style>
